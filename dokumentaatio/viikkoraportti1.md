@@ -10,6 +10,7 @@
 | Markovin ketjuihin ja Javan midi paketteihin tutustuminen | 4h | ke ja to |
 | Repon luominen ja ensimmäinen palautus | 5h | pe-la yö |
 | Määrittelydokumentti | - | pe-la yö |
+| Readme linkkien lisäys | - | pe-la yö |
 
 # Edistyminen
 - Taustatyötä on tehty mutta itse koodaamista ei vielä aloitettu
