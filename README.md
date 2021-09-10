@@ -4,4 +4,4 @@ Java projekti jonka tarkoitus on tuottaa MIDI-raitoja Markovin ketjuja käyttäe
 ## Dokumentaatio
 [Määrittelydokumentti](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/maarittely.md)
 
-[Viikkoraportti1](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/viikkoraportti1.md)
+[Viikkoraportti1](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/viikkoraportit/viikkoraportti1.md)
