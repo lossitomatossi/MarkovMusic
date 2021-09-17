@@ -19,7 +19,10 @@ public class BigramTest {
     Bigram kohdeBigram;
     Bigram kohdeBigram2;
 
-    
+    Bigram stringBigram;
+    Bigram stringKohde;
+    Bigram stringKohde2;
+
     public BigramTest() {
     }
     
@@ -28,6 +31,10 @@ public class BigramTest {
         testiBigram = new Bigram(1, 2);
         kohdeBigram = new Bigram(1, 2);
         kohdeBigram2 = new Bigram(2, 1);
+
+        stringBigram = new Bigram("A", "B");
+        stringKohde = new Bigram("A", "B");
+        stringKohde2 = new Bigram("B", "A");
 
     }
     
@@ -42,12 +49,14 @@ public class BigramTest {
     public void testGetO1ver1() {
         System.out.println("getO1ver1");
         assertEquals(testiBigram.getO1(), kohdeBigram.getO1());
+        assertEquals(stringBigram.getO1(), stringKohde.getO1());
     }
 
     @Test
     public void testGetO1ver2() {
         System.out.println("getO1ver2");
         assertNotEquals(testiBigram.getO1(), kohdeBigram2.getO1());
+        assertNotEquals(stringBigram.getO1(), stringKohde2.getO1());
     }
 
     /**
