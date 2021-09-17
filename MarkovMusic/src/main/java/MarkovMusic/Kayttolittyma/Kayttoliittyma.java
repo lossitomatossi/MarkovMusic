@@ -41,10 +41,8 @@ public class Kayttoliittyma {
                     //nayta kappaleet
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
-                            + "Valitse " + "\"komennot\"" + " nähdäksesi komennot.");
+                            + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
             }
-                    
-            
         }
     
     }
