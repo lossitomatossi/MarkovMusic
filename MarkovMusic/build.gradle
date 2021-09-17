@@ -5,6 +5,10 @@ apply plugin: 'application'
 
 mainClassName = 'MarkovMusic.Main'
 
+run {
+    standardInput = System.in
+}
+
 repositories {
     jcenter()
 }
