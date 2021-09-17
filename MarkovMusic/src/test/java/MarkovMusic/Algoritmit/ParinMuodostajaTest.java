@@ -18,39 +18,39 @@ public class ParinMuodostajaTest {
     
     public ParinMuodostajaTest() {
     }
-//    
-//    @Before
-//    public void setUp() {
-//        this.taajuudet = new ArrayList();
-//        Collections.addAll(taajuudet, 1,2,3,4,5);
-//    }
-//    
-//    @After
-//    public void tearDown() {
-//    }
-//
-//    /**
-//     * Test of muodostaTaajuusParit method, of class ParinMuodostaja.
-//     */
-//    @Test
-//    public void testMuodostaTaajuusParit() {
-//        System.out.println("muodostaTaajuusParit");
-//        
-//        ParinMuodostaja instance = new ParinMuodostaja();
-//        List<Bigram> expResult = new ArrayList();
-//        Bigram eka = new Bigram(1, 2);
-//        Bigram toka = new Bigram(2, 3);
-//        Bigram kolmas = new Bigram(3, 4);
-//        Bigram neljas  = new Bigram(4, 5);
-//        Collections.addAll(expResult, eka, toka, kolmas, neljas);
-//        List<Bigram> result = instance.muodostaTaajuusParit(taajuudet);
-//        assertEquals(expResult, result);
-//    }
-//
-//    /**
-//     * Test of muodostaNuottiParit method, of class ParinMuodostaja.
-//     */
-//    /*
+    
+    @Before
+    public void setUp() {
+        this.taajuudet = new ArrayList();
+        Collections.addAll(taajuudet, 1,2,3,4,5);
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of muodostaTaajuusParit method, of class ParinMuodostaja.
+     */
+    @Test
+    public void testMuodostaTaajuusParit() {
+        System.out.println("muodostaTaajuusParit");
+        
+        ParinMuodostaja instance = new ParinMuodostaja();
+        List<Bigram> expResult = new ArrayList();
+        Bigram eka = new Bigram(1, 2);
+        Bigram toka = new Bigram(2, 3);
+        Bigram kolmas = new Bigram(3, 4);
+        Bigram neljas  = new Bigram(4, 5);
+        Collections.addAll(expResult, eka, toka, kolmas, neljas);
+        List<Bigram> result = instance.muodostaTaajuusParit(taajuudet);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of muodostaNuottiParit method, of class ParinMuodostaja.
+     */
+    
 //    @Test
 //    public void testMuodostaNuottiParit() {
 //        System.out.println("muodostaNuottiParit");
@@ -62,6 +62,6 @@ public class ParinMuodostajaTest {
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
 //    }
-//*/
+
     
 }
