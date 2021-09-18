@@ -24,11 +24,17 @@ public class Tiedostonlukija {
     
     public List<String> lataaNuotitTekstista(String kappale) throws IOException {
         //tee monipuolinen metodi
-        String teksti = this.lueTiedosto("musiikki/sointutiedostot/Wonderwall.txt");
+        String teksti;
+        if (kappale.equals("testi")) {
+            teksti = this.lueTiedosto("musiikki/sointutiedostot/testitiedosto.txt");
+        } else {
+            teksti = this.lueTiedosto("musiikki/sointutiedostot/Wonderwall.txt");
+        }
         return tekstiNuoteiksi(teksti);
+        
     }
     
-    private List<String> tekstiNuoteiksi(String kappale) {
+    public List<String> tekstiNuoteiksi(String kappale) {
         List<String> kaikkiNuotit = new ArrayList<>();
         Matcher m = Pattern.compile(nuottiRegex).matcher(kappale);
         while (m.find()) {
@@ -37,7 +43,7 @@ public class Tiedostonlukija {
         return kaikkiNuotit;
     }
     
-    private String lueTiedosto(String sijainti) throws FileNotFoundException, IOException {
+    public String lueTiedosto(String sijainti) throws FileNotFoundException, IOException {
         File tiedosto = new File(sijainti);
         BufferedReader br = new BufferedReader(new FileReader(tiedosto));
         String teksti = "";
