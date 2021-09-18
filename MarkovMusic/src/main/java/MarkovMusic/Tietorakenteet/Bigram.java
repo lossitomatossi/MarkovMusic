@@ -11,7 +11,7 @@ public class Bigram {
     Object o2;
     
     /**
-     * String muotoisten bigramien alustus, käytetään esim nuottien nimillä
+     * String muotoisten bigramien alustus, kï¿½ytetï¿½ï¿½n esim nuottien nimillï¿½
      * @param s1 Bigram parin ensimmainen muuttuja
      * @param s2 Bigram parin toinen muuttuja
      */
@@ -49,27 +49,18 @@ public class Bigram {
     /**
      *
      * @param obj
-     * @Metodi Metodi bigram objektien vertailuun jota tarvitaan parien lukumäärän laskemiseen
+     * @Metodi Metodi bigram objektien vertailuun jota tarvitaan parien lukumï¿½ï¿½rï¿½n laskemiseen
      */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
+        if (!(obj instanceof Bigram)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Bigram other = (Bigram) obj;
-        if (!Objects.equals(this.o1, other.o1)) {
-            return false;
-        }
-        if (!Objects.equals(this.o2, other.o2)) {
-            return false;
-        }
-        return true;
+        Bigram other = (Bigram) obj;
+        return other.o1.equals(this.o1) && other.o2.equals(this.o2);
     }
 
     /**
