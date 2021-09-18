@@ -39,16 +39,16 @@ public class TiedostonlukijaTest {
     public void tearDown() {
     }
 
-    /**
-     * Testaa metodia lataaNuotitTekstista luokka: Tiedostonlukija.
-     */
-    @Test
-    public void testLataaNuotitTekstista() throws Exception {
-        System.out.println("lataaNuotitTekstista");
-        String kappale = "testi";
-        List<String> tulos = tl.lataaNuotitTekstista(kappale);
-        assertEquals(oletettuLista, tulos);
-    }
+//    /**
+//     * Testaa metodia lataaNuotitTekstista luokka: Tiedostonlukija.
+//     */
+//    @Test
+//    public void testLataaNuotitTekstista() throws Exception {
+//        System.out.println("lataaNuotitTekstista");
+//        String kappale = "testi";
+//        List<String> tulos = tl.lataaNuotitTekstista(kappale);
+//        assertEquals(oletettuLista, tulos);
+//    }
    
     /**
      * Testaa metodia tekstiNuoteiksi, luokka: Tiedostonlukija

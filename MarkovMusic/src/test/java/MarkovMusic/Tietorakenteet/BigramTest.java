@@ -6,9 +6,11 @@
 package MarkovMusic.Tietorakenteet;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -37,98 +39,91 @@ public class BigramTest {
         stringKohde2 = new Bigram("B", "A");
 
     }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
-    * Test of getO1 method, of class Bigram.
-    */
+     * Test of getO1 method, of class Bigram.
+     */
     @Test
-    public void testGetO1ver1() {
-        System.out.println("getO1ver1");
-        assertEquals(testiBigram.getO1(), kohdeBigram.getO1());
-        assertEquals(stringBigram.getO1(), stringKohde.getO1());
+    public void testGetO1() {
+        System.out.println("getO1");
+        assertEquals(testiBigram.getO1(), testiBigram.o1);
     }
-
+    
+    /**
+     * Test of getO1 method, of class Bigram.
+     */
     @Test
     public void testGetO1ver2() {
-        System.out.println("getO1ver2");
+        System.out.println("getO1");
         assertNotEquals(testiBigram.getO1(), kohdeBigram2.getO1());
-        assertNotEquals(stringBigram.getO1(), stringKohde2.getO1());
     }
 
-    /**
-    * Test of getO2 method, of class Bigram.
-    */
     @Test
-    public void testGetO2ver1() {
-        System.out.println("getO2ver1");
-        assertEquals(testiBigram.getO2(), kohdeBigram.getO2());
+    public void testGetO2() {
+        System.out.println("getO2");
+        assertEquals(testiBigram.getO2(), testiBigram.o2);
     }
-
+    
+    /**
+     * Test of getO2 method, of class Bigram.
+     */
     @Test
     public void testGetO2ver2() {
-        System.out.println("getO2ver2");
+        System.out.println("getO2");
         assertNotEquals(testiBigram.getO2(), kohdeBigram2.getO2());
     }
 
-
     /**
-     * Test 1 of equals method, of class Bigram.
+     * Test of toString method, of class Bigram.
      */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        assertEquals("Bigram(1,2)", testiBigram.toString());
+    }
+    
+    /**
+     * Test of equals method, of class Bigram.
+     */
+    
     @Test
     public void testEquals() {
-        System.out.println("equals");
-        assertEquals(true, testiBigram.equals(kohdeBigram));
+        assertEquals(testiBigram, testiBigram);
     }
-
+    
     /**
-     * Test 2 of equals method, of class Bigram.
+     * Test2 of equals method, of class Bigram.
      */
+    
     @Test
     public void testEquals2() {
-        System.out.println("equals2");
-        assertEquals(false, testiBigram.equals(kohdeBigram2));
+        assertEquals(testiBigram, kohdeBigram);
     }
-
+    
     /**
-     * Test 3 of equals3 method, of class Bigram.
+     * Test3 of equals method, of class Bigram.
      */
+    
     @Test
     public void testEquals3() {
-        System.out.println("equals3");
-        assertEquals(true, testiBigram.equals(testiBigram));
+        assertEquals(false, testiBigram.equals(""));
     }
-
-    /**
-     * Test 4 of equals method, of class Bigram.
+    
+     /**
+     * Test4 of equals method, of class Bigram.
      */
+    
     @Test
     public void testEquals4() {
-        System.out.println("equals4");
-        String testi = "";
-        assertEquals(false, testiBigram.equals(testi));
-    }
-
-    /**
-     * Test of hashCode method, of class Bigram.
-     */
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-        assertEquals(testiBigram.hashCode(), kohdeBigram.hashCode());
-        
+        assertEquals(false, testiBigram.equals(kohdeBigram2));
     }
     
     /**
      * Test of hashCode method, of class Bigram.
      */
+    
     @Test
-    public void testHashCode2() {
-        System.out.println("hashCode2");
-        assertNotEquals(testiBigram.hashCode(), kohdeBigram2.hashCode());
-        
+    public void testHashCode() {
+        assertEquals(testiBigram.hashCode(), kohdeBigram.hashCode());
     }
 }

@@ -60,7 +60,8 @@ public class Bigram {
             return false;
         }
         Bigram other = (Bigram) obj;
-        return other.o1.equals(this.o1) && other.o2.equals(this.o2);
+        Boolean yhtasuuri = other.o1.equals(this.o1) && other.o2.equals(this.o2);
+        return yhtasuuri;
     }
 
     /**
