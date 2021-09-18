@@ -33,7 +33,7 @@ public class ParinMuodostajaTest {
     }
 
     /**
-     * Test of muodostaTaajuusParit method, of class ParinMuodostaja.
+     * Testaa metodia muodostaTaajuusParit, luokka: ParinMuodostaja.
      */
     @Test
     public void testMuodostaTaajuusParit() {
@@ -51,7 +51,7 @@ public class ParinMuodostajaTest {
     }
 
     /**
-     * Test of muodostaNuottiParit method, of class ParinMuodostaja.
+     * Testaa metodia muodostaNuottiParit, luokka: ParinMuodostaja.
      */
     
     @Test
