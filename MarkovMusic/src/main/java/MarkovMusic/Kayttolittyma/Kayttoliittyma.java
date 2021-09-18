@@ -14,11 +14,9 @@ import java.util.Scanner;
 
 public class Kayttoliittyma {
     //private final kappaleet();
-    private final Scanner skanneri;
     private final BufferedReader br;
     
     public Kayttoliittyma() {
-        skanneri = new Scanner(System.in);
         br = new BufferedReader(new InputStreamReader(System.in));
         
     }
