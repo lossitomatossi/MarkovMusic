@@ -5,20 +5,22 @@ package MarkovMusic.Kayttolittyma;
  * @author tompp
  */
 
+import MarkovMusic.Apumetodit.Tiedostonlukija;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Kayttoliittyma {
     //private final kappaleet();
     private final BufferedReader br;
+    private final Tiedostonlukija tl;
+    private List<String> kappaleet;
     
     public Kayttoliittyma() {
         br = new BufferedReader(new InputStreamReader(System.in));
-        
+        tl = new Tiedostonlukija();
     }
     
     public void kaynnistaKayttoliittyma() throws IOException {
@@ -41,6 +43,17 @@ public class Kayttoliittyma {
                     break;
                 case "kappaleet":
                     //nayta kappaleet
+                    break;
+                case "lue":
+                    //listaa luettavat tiedostot
+                    System.out.println("Valitse tiedosto");
+                    //komento = br.readLine();
+                    //komento = komento.toLowerCase();
+                    String wonderwall = tl.lataaNuotitTekstista("Wonderwall");
+                    kappaleet.add(wonderwall);
+                    break;
+                case "bigram":
+                    break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
