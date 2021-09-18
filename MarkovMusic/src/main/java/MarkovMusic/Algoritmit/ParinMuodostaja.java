@@ -36,7 +36,7 @@ public class ParinMuodostaja {
     }
     
     public void summaaNuottiParit(List<Bigram> lista) {
-        Map<Bigram, Long> counts = lista.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
-        System.out.println(counts);
+        Map<Bigram, Long> summat = lista.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        System.out.println(summat);
     }
 }
