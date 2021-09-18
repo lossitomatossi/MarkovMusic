@@ -2,7 +2,10 @@ package MarkovMusic.Algoritmit;
 
 import MarkovMusic.Tietorakenteet.Bigram;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -14,7 +17,7 @@ public class ParinMuodostaja {
     }
 
     public List<Bigram> muodostaTaajuusParit(List<Integer> taajuudet) {
-        List<Bigram> parit = new ArrayList<Bigram>();
+        List<Bigram> parit = new ArrayList<>();
         //List<Integer> taajuus = taajuudet;
         for (int i = 1; i < taajuudet.size(); i++) {
             parit.add(new Bigram(taajuudet.get(i - 1), taajuudet.get(i)));
@@ -31,5 +34,9 @@ public class ParinMuodostaja {
 
         return parit;
     }
-
+    
+    public void summaaNuottiParit(List<Bigram> lista) {
+        Map<Bigram, Long> counts = lista.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        System.out.println(counts);
+    }
 }

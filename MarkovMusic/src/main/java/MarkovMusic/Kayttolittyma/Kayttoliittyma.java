@@ -71,6 +71,9 @@ public class Kayttoliittyma {
                             }
                             System.out.println("Bigram parit muodostettu!");
                             //tee metodi joka muutta bigram parit uniikeiks ja laskee lukumäärät et saa todennäkösyydet.
+                            for (List<Bigram> bigramLista : bigramit) {
+                                pm.summaaNuottiParit(bigramLista);
+                            }
                             break;
                         case "e":
                             break;

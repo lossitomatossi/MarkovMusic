@@ -74,6 +74,11 @@ public class Bigram {
         hash = 41 * hash + Objects.hashCode(this.o2);
         return hash;
     }
+
+    @Override
+    public String toString() {
+        return "Bigram(" + o1 +"," + o2 +")";
+    }
     
     
     
