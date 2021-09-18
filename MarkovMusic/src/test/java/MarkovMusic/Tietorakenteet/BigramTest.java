@@ -76,7 +76,7 @@ public class BigramTest {
 
 
     /**
-     * Test of equals method, of class Bigram.
+     * Test 1 of equals method, of class Bigram.
      */
     @Test
     public void testEquals() {
@@ -85,12 +85,31 @@ public class BigramTest {
     }
 
     /**
-     * Test of equals method, of class Bigram.
+     * Test 2 of equals method, of class Bigram.
      */
     @Test
     public void testEquals2() {
         System.out.println("equals2");
         assertEquals(false, testiBigram.equals(kohdeBigram2));
+    }
+
+    /**
+     * Test 3 of equals3 method, of class Bigram.
+     */
+    @Test
+    public void testEquals3() {
+        System.out.println("equals3");
+        assertEquals(true, testiBigram.equals(testiBigram));
+    }
+
+    /**
+     * Test 4 of equals method, of class Bigram.
+     */
+    @Test
+    public void testEquals4() {
+        System.out.println("equals4");
+        String testi = "";
+        assertEquals(false, testiBigram.equals(testi));
     }
 
     /**
