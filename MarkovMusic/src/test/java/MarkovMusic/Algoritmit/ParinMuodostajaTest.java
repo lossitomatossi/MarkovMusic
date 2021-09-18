@@ -15,14 +15,17 @@ import org.junit.Test;
  */
 public class ParinMuodostajaTest {
     List<Integer> taajuudet;
+    List<String> nuotit;
     
     public ParinMuodostajaTest() {
     }
     
     @Before
     public void setUp() {
-        this.taajuudet = new ArrayList();
+        this.taajuudet = new ArrayList<>();
         Collections.addAll(taajuudet, 1,2,3,4,5);
+        this.nuotit = new ArrayList<>();
+        Collections.addAll(nuotit, "A", "F", "G", "F", "H");
     }
     
     @After
@@ -36,32 +39,35 @@ public class ParinMuodostajaTest {
     public void testMuodostaTaajuusParit() {
         System.out.println("muodostaTaajuusParit");
         
-        ParinMuodostaja instance = new ParinMuodostaja();
-        List<Bigram> expResult = new ArrayList();
+        ParinMuodostaja pm = new ParinMuodostaja();
+        List<Bigram> oletettu = new ArrayList<>();
         Bigram eka = new Bigram(1, 2);
         Bigram toka = new Bigram(2, 3);
         Bigram kolmas = new Bigram(3, 4);
         Bigram neljas  = new Bigram(4, 5);
-        Collections.addAll(expResult, eka, toka, kolmas, neljas);
-        List<Bigram> result = instance.muodostaTaajuusParit(taajuudet);
-        assertEquals(expResult, result);
+        Collections.addAll(oletettu, eka, toka, kolmas, neljas);
+        List<Bigram> tulos = pm.muodostaTaajuusParit(taajuudet);
+        assertEquals(oletettu, tulos);
     }
 
     /**
      * Test of muodostaNuottiParit method, of class ParinMuodostaja.
      */
     
-//    @Test
-//    public void testMuodostaNuottiParit() {
-//        System.out.println("muodostaNuottiParit");
-//        List<String> nuotit = null;
-//        ParinMuodostaja instance = new ParinMuodostaja();
-//        List<Bigram> expResult = null;
-//        List<Bigram> result = instance.muodostaNuottiParit(nuotit);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testMuodostaNuottiParit() {
+        System.out.println("muodostaNuottiParit");
+        
+        ParinMuodostaja pm = new ParinMuodostaja();
+        List<Bigram> oletettu = new ArrayList<>();
+        Bigram eka = new Bigram("A", "F");
+        Bigram toka = new Bigram("F", "G");
+        Bigram kolmas = new Bigram("G", "F");
+        Bigram neljas  = new Bigram("F", "H");
+        Collections.addAll(oletettu, eka, toka, kolmas, neljas);
+        List<Bigram> tulos = pm.muodostaNuottiParit(nuotit);
+        assertEquals(oletettu, tulos);
+    }
 
     
 }
