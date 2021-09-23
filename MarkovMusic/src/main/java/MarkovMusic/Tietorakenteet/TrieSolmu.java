@@ -35,6 +35,11 @@ public class TrieSolmu {
         }
     }
     
+    public HashMap<Double, String> getLapset() {
+        
+        return this.lapset;
+    }
+    
     
     
 }
