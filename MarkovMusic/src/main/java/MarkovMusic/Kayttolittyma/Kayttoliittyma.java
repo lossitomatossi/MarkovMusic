@@ -21,6 +21,7 @@ public class Kayttoliittyma {
     private List<List<String>> kappaleet;
     private List<List<Bigram>> bigramit;
     private ParinMuodostaja pm;
+    private UIapu uiapu;
     
     
     public Kayttoliittyma() {
@@ -29,16 +30,15 @@ public class Kayttoliittyma {
         kappaleet = new ArrayList<>();
         bigramit = new ArrayList<>();
         pm = new ParinMuodostaja();
+        uiapu = new UIapu();
     }
     
     public void kaynnistaKayttoliittyma() throws IOException {
-        System.out.println("Tervetuloa MarkovMusic ohjelmaan");
+        System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
         while (true) {
             List<String> komennot = new ArrayList();
-            
-            // tee metodi joka listaa toiminnot
-            System.out.println("Anna komento:");
+            System.out.println("Anna komento (jos haluat nähdä komennot kirjoita komennot):");
             komento = br.readLine();
             komento = komento.toLowerCase();
             switch (komento) {
@@ -47,10 +47,10 @@ public class Kayttoliittyma {
                     br.close();
                     return;
                 case "komennot":
-                    //listaa komennot
+                    uiapu.komennot();
                     break;
                 case "kappaleet":
-                    //nayta kappaleet
+                    uiapu.kappaleet();
                     break;
                 case "lue":
                     //listaa luettavat tiedostot
