@@ -68,6 +68,7 @@ public class BigramTest {
     public void testToString() {
         System.out.println("toString");
         assertEquals("NumeroBigram(1,2)", numeroBigram.toString());
+        assertEquals("TekstiBigram(A,B)", tekstiBigram.toString());
     }
     
     /**
