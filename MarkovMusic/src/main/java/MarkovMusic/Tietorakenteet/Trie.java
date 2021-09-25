@@ -21,6 +21,14 @@ public class Trie {
 //        }
 //    }
     
+    private Boolean solmuOlemassa(String avain) {
+        if (this.juuri.containsKey(avain)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     
     
     
