@@ -12,7 +12,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Kayttoliittyma {
     //private final kappaleet();
@@ -22,6 +24,7 @@ public class Kayttoliittyma {
     private List<List<Bigram>> bigramit;
     private ParinMuodostaja pm;
     private UIapu uiapu;
+    private Map<Bigram, Long> bigramMap;
     
     
     public Kayttoliittyma() {
@@ -31,6 +34,7 @@ public class Kayttoliittyma {
         bigramit = new ArrayList<>();
         pm = new ParinMuodostaja();
         uiapu = new UIapu();
+        bigramMap = new HashMap();
     }
     
     public void kaynnistaKayttoliittyma() throws IOException {
@@ -66,14 +70,9 @@ public class Kayttoliittyma {
                     komento = komento.toLowerCase();
                     switch (komento) {
                         case "k":
-                            for (List<String> kappale : kappaleet) {
-                                bigramit.add(pm.muodostaNuottiParit(kappale));
-                            }
+                            bigramMap = uiapu.muodostaBigramit(kappaleet);
                             System.out.println("Bigram parit muodostettu!");
-                            //tee metodi joka muutta bigram parit uniikeiks ja laskee lukumäärät et saa todennäkösyydet.
-                            for (List<Bigram> bigramLista : bigramit) {
-                                pm.summaaNuottiParit(bigramLista);
-                            }
+                            System.out.println(bigramMap);
                             break;
                         case "e":
                             break;

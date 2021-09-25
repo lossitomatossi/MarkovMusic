@@ -27,7 +27,7 @@ public class ParinMuodostaja {
     }
 
     public List<Bigram> muodostaNuottiParit(List<String> nuotit) {
-        List<Bigram> parit = new ArrayList<Bigram>();
+        List<Bigram> parit = new ArrayList<>();
         for (int i = 1; i < nuotit.size(); i++) {
             parit.add(new Bigram(nuotit.get(i - 1), nuotit.get(i)));
         }
@@ -35,8 +35,8 @@ public class ParinMuodostaja {
         return parit;
     }
     
-    public void summaaNuottiParit(List<Bigram> lista) {
+    public Map<Bigram, Long> summaaNuottiParit(List<Bigram> lista) {
         Map<Bigram, Long> summat = lista.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
-        System.out.println(summat);
+        return summat;
     }
 }
