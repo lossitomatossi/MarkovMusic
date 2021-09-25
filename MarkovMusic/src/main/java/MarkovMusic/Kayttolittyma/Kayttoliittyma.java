@@ -21,9 +21,8 @@ public class Kayttoliittyma {
     private final BufferedReader br;
     private final Tiedostonlukija tl;
     private List<List<String>> kappaleet;
-    private List<List<Bigram>> bigramit;
     private ParinMuodostaja pm;
-    private UIapu uiapu;
+    private final UIapu uiapu;
     private Map<Bigram, Long> bigramMap;
     
     
@@ -31,7 +30,6 @@ public class Kayttoliittyma {
         br = new BufferedReader(new InputStreamReader(System.in));
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
-        bigramit = new ArrayList<>();
         pm = new ParinMuodostaja();
         uiapu = new UIapu();
         bigramMap = new HashMap();
@@ -69,18 +67,18 @@ public class Kayttoliittyma {
                     komento = br.readLine();
                     komento = komento.toLowerCase();
                     switch (komento) {
-                        case "k":
+                        case "k" -> {
                             bigramMap = uiapu.muodostaBigramit(kappaleet);
                             System.out.println("Bigram parit muodostettu!");
-                            System.out.println(bigramMap);
-                            break;
-                        case "e":
-                            break;
-                        default:
-                            System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
-                            break;
+                        //System.out.println(bigramMap);
+                    }
+                        case "e" -> {
+                            System.out.println("Palataan käyttöliittymään.");
+                    }
+                        default -> System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
                     }
                     break;
+
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
