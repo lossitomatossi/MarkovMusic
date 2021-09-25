@@ -1,8 +1,10 @@
 package MarkovMusic.Kayttolittyma;
 
 import MarkovMusic.Algoritmit.ParinMuodostaja;
+import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
 import MarkovMusic.Tietorakenteet.Trie;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +17,11 @@ import java.util.Map;
 public class UIapu {
 
     private ParinMuodostaja pm;
+    private Tiedostonlukija tl;
 
     public UIapu() {
         this.pm = new ParinMuodostaja();
+        this.tl = new Tiedostonlukija();
     }
 
     public void komennot() {
@@ -27,14 +31,19 @@ public class UIapu {
         System.out.println(komennot);
     }
 
-    public void kappaleet() {
+    public List<String> kappaleet() throws IOException {
         System.out.println("Ohjelman löytämät kappaleet ovat:");
-        List<String> kappaleet = new ArrayList();
-        String printti = "";
-        for (String biisi : kappaleet) {
-            printti += biisi + "\n";
-        }
-        System.out.println(printti);
+        return tl.listaaTiedostot("musiikki/kappaleet/");
+    }
+    
+    public List<String> sointutiedostot() throws IOException {
+        System.out.println("Ohjelman löytämät kappaleet ovat:");
+        return tl.listaaTiedostot("musiikki/sointutiedostot/");
+    }
+    
+    public List<String> midit() throws IOException {
+        System.out.println("Ohjelman löytämät kappaleet ovat:");
+        return tl.listaaTiedostot("musiikki/MIDI/");
     }
 
     public Map<Bigram, Double> muodostaBigramit(List<List<String>> syote) {

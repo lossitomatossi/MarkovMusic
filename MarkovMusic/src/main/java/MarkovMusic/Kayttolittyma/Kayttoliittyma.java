@@ -55,7 +55,13 @@ public class Kayttoliittyma {
                     uiapu.komennot();
                     break;
                 case "kappaleet":
-                    uiapu.kappaleet();
+                    System.out.println(uiapu.kappaleet());
+                    break;
+                case "sointutiedostot":
+                    System.out.println(uiapu.sointutiedostot());
+                    break;
+                case "MIDIT":
+                    System.out.println(uiapu.midit());
                     break;
                 case "lue":
                     //listaa luettavat tiedostot
