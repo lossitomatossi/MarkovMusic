@@ -6,16 +6,20 @@ package MarkovMusic.Kayttolittyma;
  */
 
 import MarkovMusic.Algoritmit.ParinMuodostaja;
+import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
 import MarkovMusic.Tietorakenteet.Trie;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiUnavailableException;
 
 public class Kayttoliittyma {
     //private final kappaleet();
@@ -26,9 +30,10 @@ public class Kayttoliittyma {
     private final UIapu uiapu;
     private Map<Bigram, Double> bigramMap;
     private Trie juuri;
+    private MIDsoitin soitin;
     
     
-    public Kayttoliittyma() {
+    public Kayttoliittyma() throws MidiUnavailableException {
         br = new BufferedReader(new InputStreamReader(System.in));
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
@@ -36,9 +41,10 @@ public class Kayttoliittyma {
         uiapu = new UIapu();
         bigramMap = new HashMap();
         juuri = new Trie();
+        soitin = new MIDsoitin();
     }
     
-    public void kaynnistaKayttoliittyma() throws IOException {
+    public void kaynnistaKayttoliittyma() throws IOException, MidiUnavailableException, FileNotFoundException, InvalidMidiDataException {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
         while (true) {
@@ -50,6 +56,7 @@ public class Kayttoliittyma {
                 case "poistu":
                     System.out.println("Suljetaan Markov music...");
                     br.close();
+                    soitin.sulje();
                     return;
                 case "komennot":
                     System.out.println(uiapu.komennot());
@@ -63,6 +70,11 @@ public class Kayttoliittyma {
                 case "MIDIT":
                     System.out.println(uiapu.midit());
                     break;
+                case "soita":
+                    soitin.soitaMid();
+                    break;
+                case "stop":
+                    soitin.stop();
                 case "lue":
                     //listaa luettavat tiedostot
                     System.out.println("Valitse tiedosto");
