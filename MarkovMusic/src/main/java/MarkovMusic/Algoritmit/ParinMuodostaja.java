@@ -3,6 +3,7 @@ package MarkovMusic.Algoritmit;
 import MarkovMusic.Tietorakenteet.Bigram;
 import java.util.ArrayList;
 import static java.util.Collections.list;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,8 +36,12 @@ public class ParinMuodostaja {
         return parit;
     }
     
-    public Map<Bigram, Long> summaaNuottiParit(List<Bigram> lista) {
+    public Map<Bigram, Double> summaaNuottiParit(List<Bigram> lista) {
         Map<Bigram, Long> summat = lista.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
-        return summat;
+        Map<Bigram, Double> dSummat = new HashMap<>();
+        for (Bigram b : summat.keySet()) {
+            dSummat.put(b, summat.get(b).doubleValue());
+        }
+        return dSummat;
     }
 }

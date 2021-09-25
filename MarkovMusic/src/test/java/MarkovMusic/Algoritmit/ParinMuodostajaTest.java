@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -83,18 +84,20 @@ public class ParinMuodostajaTest {
         assertEquals(oletettu, tulos);
     }
     
-//    @Test
-//    public void testSummaaNuottiParit() {
-//        ParinMuodostaja pm = new ParinMuodostaja();
-//        List<Bigram> oletettu = new ArrayList<>();
-//        Bigram eka = new Bigram("A", "F");
-//        Bigram toka = new Bigram("F", "G");
-//        Bigram kolmas = new Bigram("G", "F");
-//        Collections.addAll(oletettu, eka, toka, kolmas);
-//        pm.summaaNuottiParit(pm.muodostaNuottiParit(oletettu));
-//        assertEquals("kakka")
-//        
-//    }
+    @Test
+    public void testSummaaNuottiParit() {
+        ParinMuodostaja pm = new ParinMuodostaja();
+        Map<Bigram, Double> testiMap = new HashMap<>();
+        List<Bigram> oletettu = new ArrayList<>();
+        List<Long> lukumaarat = new ArrayList<>();
+        
+        Bigram eka = new Bigram("A", "F");
+        Bigram toka = new Bigram("F", "G");
+        Bigram kolmas = new Bigram("G", "F");
+        Collections.addAll(oletettu, eka, toka, kolmas);
+        pm.summaaNuottiParit(pm.muodostaNuottiParit(nuotit));
+        
+    }
 
     
 }

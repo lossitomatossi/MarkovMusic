@@ -24,7 +24,7 @@ public class Kayttoliittyma {
     private final List<List<String>> kappaleet;
     private final ParinMuodostaja pm;
     private final UIapu uiapu;
-    private Map<Bigram, Long> bigramMap;
+    private Map<Bigram, Double> bigramMap;
     private Trie juuri;
     
     

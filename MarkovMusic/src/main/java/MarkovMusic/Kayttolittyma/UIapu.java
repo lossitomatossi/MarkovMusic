@@ -37,14 +37,14 @@ public class UIapu {
         System.out.println(printti);
     }
 
-    public Map<Bigram, Long> muodostaBigramit(List<List<String>> syote) {
+    public Map<Bigram, Double> muodostaBigramit(List<List<String>> syote) {
         List<List<Bigram>> palautettava = bigramApu1(syote);
         
         return bigramApu2(palautettava);
     }
 
-    public Map<Bigram, Long> bigramApu2(List<List<Bigram>> bigramit) {
-        Map<Bigram, Long> summat = new HashMap();
+    public Map<Bigram, Double> bigramApu2(List<List<Bigram>> bigramit) {
+        Map<Bigram, Double> summat = new HashMap();
         bigramit.forEach((var bigramLista) -> {
             summat.putAll(pm.summaaNuottiParit(bigramLista));
         });
@@ -59,7 +59,7 @@ public class UIapu {
         return bigramit;
     }
     
-    public Trie bigramitSolmuiksi(Map<Bigram, Long> bigramMap, Trie juuri) {
+    public Trie bigramitSolmuiksi(Map<Bigram, Double> bigramMap, Trie juuri) {
 //        List<Bigram> avaimet = (List<Bigram>) bigramMap.keySet();
         Trie palautusTrie = juuri;
         for (Bigram solmu : bigramMap.keySet()) {
