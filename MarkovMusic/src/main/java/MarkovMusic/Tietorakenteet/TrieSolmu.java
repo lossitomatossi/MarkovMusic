@@ -17,26 +17,24 @@ public class TrieSolmu {
         this.numero = onNumero;
     }
     
-    
     //ottaa vastaan kaikki lapset ja niiden esiintymislukumaarat
-    public void lisaaLapset(HashMap<String, Integer> lisattavat) {
-        Integer esiintymia = 0;
-        for (Integer lkm : lisattavat.values()) {
+    public void lisaaLapset(HashMap<Bigram, Double> lisattavat) {
+        double esiintymia = 0.0;
+        for (Double lkm : lisattavat.values()) {
             esiintymia += lkm;
         }
         
         Double todnak = 0.0;
         Double edellisenTodnak = 0.0;
-        Integer lkm;
-        for (String nuotti : lisattavat.keySet()) {
-            lkm = lisattavat.get(nuotti);
+        Double lkm;
+        for (Bigram b : lisattavat.keySet()) {
+            lkm = lisattavat.get(b);
             todnak = edellisenTodnak + (lkm / esiintymia);
-            this.lapset.put(todnak, nuotti);
+            this.lapset.put(todnak, b.s2);
         }
     }
     
     public HashMap<Double, String> getLapset() {
-        
         return this.lapset;
     }
     

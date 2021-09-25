@@ -2,6 +2,7 @@ package MarkovMusic.Kayttolittyma;
 
 import MarkovMusic.Algoritmit.ParinMuodostaja;
 import MarkovMusic.Tietorakenteet.Bigram;
+import MarkovMusic.Tietorakenteet.Trie;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +57,16 @@ public class UIapu {
             bigramit.add(pm.muodostaNuottiParit(kappale));
         });
         return bigramit;
+    }
+    
+    public Trie bigramitSolmuiksi(Map<Bigram, Long> bigramMap, Trie juuri) {
+//        List<Bigram> avaimet = (List<Bigram>) bigramMap.keySet();
+        Trie palautusTrie = juuri;
+        for (Bigram solmu : bigramMap.keySet()) {
+            
+        }
+        
+        return palautusTrie;
     }
 
 }

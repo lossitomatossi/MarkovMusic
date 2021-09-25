@@ -17,26 +17,26 @@ import org.junit.BeforeClass;
  * @author tompp
  */
 public class BigramTest {
-    Bigram testiBigram;
-    Bigram kohdeBigram;
-    Bigram kohdeBigram2;
+    Bigram numeroBigram;
+    Bigram numeroKohde;
+    Bigram numeroKohde2;
 
-    Bigram stringBigram;
-    Bigram stringKohde;
-    Bigram stringKohde2;
+    Bigram tekstiBigram;
+    Bigram tekstiKohde;
+    Bigram tekstiKohde2;
 
     public BigramTest() {
     }
     
     @Before
     public void setUp() {
-        testiBigram = new Bigram(1, 2);
-        kohdeBigram = new Bigram(1, 2);
-        kohdeBigram2 = new Bigram(2, 1);
+        numeroBigram = new Bigram(1, 2);
+        numeroKohde = new Bigram(1, 2);
+        numeroKohde2 = new Bigram(2, 1);
 
-        stringBigram = new Bigram("A", "B");
-        stringKohde = new Bigram("A", "B");
-        stringKohde2 = new Bigram("B", "A");
+        tekstiBigram = new Bigram("A", "B");
+        tekstiKohde = new Bigram("A", "B");
+        tekstiKohde2 = new Bigram("B", "A");
 
     }
 
@@ -44,33 +44,21 @@ public class BigramTest {
      * Test of getO1 method, of class Bigram.
      */
     @Test
-    public void testGetO1() {
-        System.out.println("getO1");
-        assertEquals(testiBigram.getO1(), testiBigram.o1);
-    }
-    
-    /**
-     * Test of getO1 method, of class Bigram.
-     */
-    @Test
-    public void testGetO1ver2() {
-        System.out.println("getO1");
-        assertNotEquals(testiBigram.getO1(), kohdeBigram2.getO1());
+    public void testGet1() {
+        System.out.println("gets1, geti1");
+        assertEquals(numeroBigram.getI1(), numeroBigram.i1);
+        assertEquals(tekstiBigram.getS1(), tekstiBigram.s1);
+        assertNotEquals(numeroBigram.getI1(), numeroKohde2.getI1());
+        assertNotEquals(tekstiBigram.getS1(), tekstiKohde2.getS1());
     }
 
     @Test
-    public void testGetO2() {
-        System.out.println("getO2");
-        assertEquals(testiBigram.getO2(), testiBigram.o2);
-    }
-    
-    /**
-     * Test of getO2 method, of class Bigram.
-     */
-    @Test
-    public void testGetO2ver2() {
-        System.out.println("getO2");
-        assertNotEquals(testiBigram.getO2(), kohdeBigram2.getO2());
+    public void testGet2() {
+        System.out.println("get2");
+        assertEquals(numeroBigram.getI2(), numeroBigram.i2);
+        assertEquals(tekstiBigram.getS2(), tekstiBigram.s2);
+        assertNotEquals(numeroBigram.getI2(), numeroKohde2.getI2());
+        assertNotEquals(tekstiBigram.getS2(), tekstiKohde2.getS2());
     }
 
     /**
@@ -79,7 +67,7 @@ public class BigramTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        assertEquals("Bigram(1,2)", testiBigram.toString());
+        assertEquals("NumeroBigram(1,2)", numeroBigram.toString());
     }
     
     /**
@@ -88,7 +76,7 @@ public class BigramTest {
     
     @Test
     public void testEquals() {
-        assertEquals(testiBigram, testiBigram);
+        assertEquals(numeroBigram, numeroBigram);
     }
     
     /**
@@ -97,7 +85,7 @@ public class BigramTest {
     
     @Test
     public void testEquals2() {
-        assertEquals(testiBigram, kohdeBigram);
+        assertEquals(numeroBigram, numeroKohde);
     }
     
     /**
@@ -106,7 +94,7 @@ public class BigramTest {
     
     @Test
     public void testEquals3() {
-        assertEquals(false, testiBigram.equals(""));
+        assertEquals(false, numeroBigram.equals(""));
     }
     
      /**
@@ -115,7 +103,7 @@ public class BigramTest {
     
     @Test
     public void testEquals4() {
-        assertEquals(false, testiBigram.equals(kohdeBigram2));
+        assertEquals(false, numeroBigram.equals(numeroKohde2));
     }
     
     /**
@@ -124,6 +112,6 @@ public class BigramTest {
     
     @Test
     public void testHashCode() {
-        assertEquals(testiBigram.hashCode(), kohdeBigram.hashCode());
+        assertEquals(numeroBigram.hashCode(), numeroKohde.hashCode());
     }
 }

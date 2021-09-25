@@ -19,9 +19,11 @@ public class TrieSolmuTest {
     
     @Before
     public void setUp() {
-        HashMap<String, Integer> lisattavat = new HashMap();
-        lisattavat.put("A", 1);
-        lisattavat.put("B", 2);
+        HashMap<Bigram, Double> lisattavat = new HashMap();
+        Bigram teksti1 = new Bigram("A", "A");
+        Bigram teksti2 = new Bigram("A", "B");
+        lisattavat.put(teksti1, 1.0);
+        lisattavat.put(teksti2, 2.0);
         this.oletettu.lisaaLapset(lisattavat);
     }
     
@@ -32,10 +34,12 @@ public class TrieSolmuTest {
     @Test
     public void testLisaaLapset() {
         System.out.println("lisaaLapset");
-        HashMap<String, Integer> testattavat = new HashMap();
+        HashMap<Bigram, Double> testattavat = new HashMap();
         TrieSolmu testi = new TrieSolmu("testi", false);
-        testattavat.put("B", 2);
-        testattavat.put("A", 1);
+        Bigram teksti1 = new Bigram("A", "A");
+        Bigram teksti2 = new Bigram("A", "B");
+        testattavat.put(teksti1, 1.0);
+        testattavat.put(teksti2, 2.0);
         testi.lisaaLapset(testattavat);
         assertEquals(oletettu.getLapset().get("A"), testi.getLapset().get("A"));
         

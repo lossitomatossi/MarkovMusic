@@ -8,6 +8,7 @@ package MarkovMusic.Kayttolittyma;
 import MarkovMusic.Algoritmit.ParinMuodostaja;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
+import MarkovMusic.Tietorakenteet.Trie;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,10 +21,11 @@ public class Kayttoliittyma {
     //private final kappaleet();
     private final BufferedReader br;
     private final Tiedostonlukija tl;
-    private List<List<String>> kappaleet;
-    private ParinMuodostaja pm;
+    private final List<List<String>> kappaleet;
+    private final ParinMuodostaja pm;
     private final UIapu uiapu;
     private Map<Bigram, Long> bigramMap;
+    private Trie juuri;
     
     
     public Kayttoliittyma() {
@@ -33,6 +35,7 @@ public class Kayttoliittyma {
         pm = new ParinMuodostaja();
         uiapu = new UIapu();
         bigramMap = new HashMap();
+        juuri = new Trie();
     }
     
     public void kaynnistaKayttoliittyma() throws IOException {
@@ -71,6 +74,7 @@ public class Kayttoliittyma {
                             bigramMap = uiapu.muodostaBigramit(kappaleet);
                             System.out.println("Bigram parit muodostettu!");
                         //System.out.println(bigramMap);
+                            uiapu.bigramitSolmuiksi(bigramMap, juuri);
                     }
                         case "e" -> {
                             System.out.println("Palataan käyttöliittymään.");

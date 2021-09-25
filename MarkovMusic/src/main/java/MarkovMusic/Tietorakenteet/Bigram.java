@@ -7,8 +7,10 @@ import java.util.Objects;
  * @author tompp
  */
 public class Bigram {
-    Object o1;
-    Object o2;
+    String s1;
+    String s2;
+    Integer i1;
+    Integer i2;
     
     /**
      * String muotoisten bigramien alustus, k�ytet��n esim nuottien nimill�
@@ -16,8 +18,10 @@ public class Bigram {
      * @param s2 Bigram parin toinen muuttuja
      */
     public Bigram(String s1, String s2) {
-        this.o1 = s1;
-        this.o2 = s2;
+        this.s1 = s1;
+        this.s2 = s2;
+        this.i1 = -1;
+        this.i2 = -1;
     }
     
     /**
@@ -26,24 +30,43 @@ public class Bigram {
      * @param i2
      */
     public Bigram(Integer i1, Integer i2) {
-        this.o1 = i1;
-        this.o2 = i2;
+        this.i1 = i1;
+        this.i2 = i2;
+        this.s1 = "";
+        this.s2 = "";
     }
 
     /**
      *
      * @return Getteri
      */
-    public Object getO1() {
-        return o1;
+    public String getS1() {
+        return s1;
     }
 
+    public Integer getI1() {
+        return i1;
+    }
     /**
      *
      * @return Getteri
      */
-    public Object getO2() {
-        return o2;
+    public String getS2() {
+        return s2;
+    }
+
+    public Integer getI2() {
+        return i2;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.s1);
+        hash = 37 * hash + Objects.hashCode(this.s2);
+        hash = 37 * hash + Objects.hashCode(this.i1);
+        hash = 37 * hash + Objects.hashCode(this.i2);
+        return hash;
     }
 
     /**
@@ -56,29 +79,34 @@ public class Bigram {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof Bigram)) {
+        if (obj == null) {
             return false;
         }
-        Bigram other = (Bigram) obj;
-        Boolean yhtasuuri = other.o1.equals(this.o1) && other.o2.equals(this.o2);
-        return yhtasuuri;
-    }
-
-    /**
-     *
-     * @return Hashcode
-     */
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.o1);
-        hash = 41 * hash + Objects.hashCode(this.o2);
-        return hash;
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Bigram other = (Bigram) obj;
+        if (!Objects.equals(this.s1, other.s1)) {
+            return false;
+        }
+        if (!Objects.equals(this.s2, other.s2)) {
+            return false;
+        }
+        if (!Objects.equals(this.i1, other.i1)) {
+            return false;
+        }
+        if (!Objects.equals(this.i2, other.i2)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Bigram(" + o1 +"," + o2 +")";
+        if (i1 == -1) {
+            return "TekstiBigram(" + s1 +"," + s2 +")";
+        }
+        return "NumeroBigram(" + i1 +"," + i2 +")";
     }
     
     

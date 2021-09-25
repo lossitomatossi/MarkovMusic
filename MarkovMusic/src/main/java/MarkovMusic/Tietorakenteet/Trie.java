@@ -12,28 +12,4 @@ public class Trie {
     public Trie() {
         this.juuri = new HashMap();
     }
-    
-//    public void lisaaSolmu(String vanhempi, String lapsi) {
-//        //tarkista numeruus
-//        HashMap<String, TrieSolmu> lapset;
-//        if (this.juuri.containsKey(vanhempi)) {
-//            this.juuri.get(vanhempi).put(lapsi, value);
-//        }
-//    }
-    
-    private Boolean solmuOlemassa(String avain) {
-        if (this.juuri.containsKey(avain)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
 }
