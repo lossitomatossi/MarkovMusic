@@ -24,11 +24,11 @@ public class UIapu {
         this.tl = new Tiedostonlukija();
     }
 
-    public void komennot() {
+    public String komennot() {
         String komennot = "Ohjelman komennot: \n\n"
                 + "eka komento \n"
                 + "toka komento \n";
-        System.out.println(komennot);
+        return komennot;
     }
 
     public List<String> kappaleet() throws IOException {
@@ -42,8 +42,8 @@ public class UIapu {
     }
     
     public List<String> midit() throws IOException {
-        System.out.println("Ohjelman löytämät kappaleet ovat:");
-        return tl.listaaTiedostot("musiikki/MIDI/");
+        System.out.println("Ohjelman löytämät MID-tiedostot ovat:");
+        return tl.listaaTiedostot("musiikki/MID/");
     }
 
     public Map<Bigram, Double> muodostaBigramit(List<List<String>> syote) {

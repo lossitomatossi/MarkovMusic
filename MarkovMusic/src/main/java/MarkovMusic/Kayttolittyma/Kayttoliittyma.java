@@ -52,7 +52,7 @@ public class Kayttoliittyma {
                     br.close();
                     return;
                 case "komennot":
-                    uiapu.komennot();
+                    System.out.println(uiapu.komennot());
                     break;
                 case "kappaleet":
                     System.out.println(uiapu.kappaleet());
