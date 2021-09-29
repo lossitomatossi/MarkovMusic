@@ -10,7 +10,7 @@ Sequence.getTracks() palauttaa muodossa Track[] taulukon jossa jokainen alkio on
 
 Tapahtumat koostuvat MidiEvent olioista, ja niiden tapahtumahetken saa event.getTick() metodilla. MidiEvent:in voi muuttaa MidiMessage:ksi event.getMessage() metodilla, jonka voi edelleen muuttaa ShortMessage:ksi helpottamaan tarkastelua.
 
-Allaoleva koodinpätkä auttaa selvittämään lisätietoa MIDI olioista. [Stackowerflow](https://stackoverflow.com/questions/3850688/reading-midi-files-in-java) (käännetty ja lyhennetty jotta dokumentaatio pysyy suomenkielisenä ja selkeänä)
+Allaoleva koodinpätkä auttaa selvittämään lisätietoa MIDI olioista. [Stackoverflow](https://stackoverflow.com/questions/3850688/reading-midi-files-in-java) (käännetty ja lyhennetty jotta dokumentaatio pysyy suomenkielisenä ja selkeänä)
 
 
 ```
