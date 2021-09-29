@@ -6,6 +6,7 @@ package MarkovMusic.Kayttolittyma;
  */
 
 import MarkovMusic.Algoritmit.ParinMuodostaja;
+import MarkovMusic.Apumetodit.MIDlukija;
 import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
@@ -31,6 +32,7 @@ public class Kayttoliittyma {
     private Map<Bigram, Double> bigramMap;
     private Trie juuri;
     private MIDsoitin soitin;
+    private MIDlukija MIDlukija;
     
     
     public Kayttoliittyma() throws MidiUnavailableException {
@@ -42,6 +44,7 @@ public class Kayttoliittyma {
         bigramMap = new HashMap();
         juuri = new Trie();
         soitin = new MIDsoitin();
+        MIDlukija = new MIDlukija();
     }
     
     public void kaynnistaKayttoliittyma() throws IOException, MidiUnavailableException, FileNotFoundException, InvalidMidiDataException {
@@ -100,7 +103,9 @@ public class Kayttoliittyma {
                         default -> System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
                     }
                     break;
-
+                case "testaus":
+//                    MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+                    break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
