@@ -1,9 +1,9 @@
 # Lähteet
 
-## MID tiedostojen yksityiskohdat
+## MIDI tiedostojen yksityiskohdat
 [Official specifications](https://www.midi.org/specifications/category/gm-specifications)
 
-## Javan MID pakettien käyttöohjeita
+## Javan MIDI pakettien käyttöohjeita
 ### Stackoverflow
 - [Reading MIDI files in java](https://stackoverflow.com/questions/3850688/reading-midi-files-in-java)
 
