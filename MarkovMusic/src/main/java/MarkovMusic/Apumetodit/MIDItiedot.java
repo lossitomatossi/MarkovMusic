@@ -5,17 +5,17 @@ package MarkovMusic.Apumetodit;
  * @author tompp
  */
 public class MIDItiedot {
-    private final int ajankohta;
+    private final long ajankohta;
     private final int savel;
     private final int kesto;
 
-    public MIDItiedot(int ajankohta, int savel, int kesto) {
+    public MIDItiedot(long ajankohta, int savel, int kesto) {
         this.ajankohta = ajankohta;
         this.savel = savel;
         this.kesto = kesto;
     }
 
-    public int getAjankohta() {
+    public long getAjankohta() {
         return ajankohta;
     }
 
