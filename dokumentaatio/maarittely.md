@@ -12,4 +12,4 @@ ja Trie-tietorakennetta niiden toteuttamiseen.
 ## Dokumentaatiokieli
 - Dokumentaatio ja koodin sisäisten muuttujien nimeäminen tapahtuu suomeksi, syynä se että osa dokumentaatiosta on jo kirjoitettu suomeksi
 
-## Lähteet
+## [Lähteet](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/lahteet.md)
