@@ -10,6 +10,8 @@ Java projekti jonka tarkoitus on tuottaa MIDI-raitoja Markovin ketjuja käyttäe
 
 [~~Käyttöohje~~](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/kayttoohje.md)
 
+[Lähteet](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/lahteet.md)
+
 ### [Viikkoraportit](https://github.com/lossitomatossi/MarkovMusic/tree/main/dokumentaatio/viikkoraportit):  [1](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/viikkoraportit/viikkoraportti1.md), [2](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/viikkoraportit/viikkoraportti2.md), [3](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/viikkoraportit/viikkoraportti3.md), [4](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/viikkoraportit/viikkoraportti4.md)
 
 [Musiikin lähteet](https://github.com/lossitomatossi/MarkovMusic/blob/main/MarkovMusic/musiikki/lahteet.md)
