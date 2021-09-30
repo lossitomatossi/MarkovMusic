@@ -29,3 +29,6 @@ if (sm.getCommand() == NOTE_ON)  ## kertoo alkaako vai loppuuko nuotti
 B ja H ovat samat, ja esim Em ja D#
 ovat sama äänenkorkeus, "#" tarkoittaa että siirrytään korkeampaan ääneen ja "m" tarkoittaa mollia,
 eli siirtymistä matalampaan ääneen. Asialla väliä vain musiikkiteorian kannalta, muuten siirtyminen on vain 1 ylös tai 1 alas.
+
+## Muuta tietoa
+Jokainen Track alkaa viestillä ``Command:192``` ja loppuu ``` Other message: class javax.sound.midi.Track$ImmutableEndOfTrack```
