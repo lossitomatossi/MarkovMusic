@@ -5,6 +5,7 @@ package MarkovMusic.Apumetodit;
  * @author tompp
  */
 public class MIDItiedot {
+
     private final long ajankohta;
     private final int savel;
     private final long kesto;

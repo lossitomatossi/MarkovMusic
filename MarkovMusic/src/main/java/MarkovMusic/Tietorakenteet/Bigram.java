@@ -7,13 +7,15 @@ import java.util.Objects;
  * @author tompp
  */
 public class Bigram {
+
     String s1;
     String s2;
     Integer i1;
     Integer i2;
-    
+
     /**
      * String muotoisten bigramien alustus, k�ytet��n esim nuottien nimill�
+     *
      * @param s1 Bigram parin ensimmainen muuttuja
      * @param s2 Bigram parin toinen muuttuja
      */
@@ -23,9 +25,11 @@ public class Bigram {
         this.i1 = -1;
         this.i2 = -1;
     }
-    
+
     /**
-     * Numero bigramien alustaja, kaytossa jos halutaan vertailla nuottien korkeutta
+     * Numero bigramien alustaja, kaytossa jos halutaan vertailla nuottien
+     * korkeutta
+     *
      * @param i1
      * @param i2
      */
@@ -47,6 +51,7 @@ public class Bigram {
     public Integer getI1() {
         return i1;
     }
+
     /**
      *
      * @return Getteri
@@ -72,7 +77,8 @@ public class Bigram {
     /**
      *
      * @param obj
-     * @Metodi Metodi bigram objektien vertailuun jota tarvitaan parien lukum��r�n laskemiseen
+     * @Metodi Metodi bigram objektien vertailuun jota tarvitaan parien
+     * lukum��r�n laskemiseen
      */
     @Override
     public boolean equals(Object obj) {
@@ -104,11 +110,9 @@ public class Bigram {
     @Override
     public String toString() {
         if (i1 == -1) {
-            return "TekstiBigram(" + s1 +"," + s2 +")";
+            return "TekstiBigram(" + s1 + "," + s2 + ")";
         }
-        return "NumeroBigram(" + i1 +"," + i2 +")";
+        return "NumeroBigram(" + i1 + "," + i2 + ")";
     }
-    
-    
-    
+
 }

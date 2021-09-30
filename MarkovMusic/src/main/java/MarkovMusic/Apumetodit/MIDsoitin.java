@@ -16,43 +16,44 @@ import javax.sound.midi.Sequencer;
  * @author tompp
  */
 public class MIDsoitin {
+
     private final Sequencer sequencer;
 
     public MIDsoitin() throws MidiUnavailableException {
         this.sequencer = MidiSystem.getSequencer();
         sequencer.open();
     }
-    
+
     public void soitaMid() throws MidiUnavailableException, FileNotFoundException, IOException, InvalidMidiDataException {
         avaaSequencer();
         File tiedosto = new File("musiikki/MID/bach-inventions.mid");
         InputStream input = new BufferedInputStream(new FileInputStream(tiedosto));
-        
+
         sequencer.setSequence(input);
         sequencer.start();
     }
-    
+
     public void stop() {
         sequencer.stop();
         sulje();
     }
-    
+
     public void sulje() {
         if (sequencer.isOpen()) {
             sequencer.close();
         }
     }
-    
+
     public Boolean sequencerAuki() {
         return this.sequencer.isOpen();
     }
-    
+
     public void avaaSequencer() throws MidiUnavailableException {
         if (!sequencerAuki()) {
             this.sequencer.open();
         }
     }
-    
+
     public Boolean sequencerPyorii() {
         return this.sequencer.isRunning();
     }

@@ -4,7 +4,6 @@ package MarkovMusic.Kayttolittyma;
  *
  * @author tompp
  */
-
 import MarkovMusic.Algoritmit.ParinMuodostaja;
 import MarkovMusic.Apumetodit.MIDItiedot;
 import MarkovMusic.Apumetodit.MIDlukija;
@@ -24,6 +23,7 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 
 public class Kayttoliittyma {
+
     //private final kappaleet();
     private final BufferedReader br;
     private final Tiedostonlukija tl;
@@ -34,8 +34,7 @@ public class Kayttoliittyma {
     private Trie juuri;
     private MIDsoitin soitin;
     private MIDlukija MIDlukija;
-    
-    
+
     public Kayttoliittyma() throws MidiUnavailableException {
         br = new BufferedReader(new InputStreamReader(System.in));
         tl = new Tiedostonlukija();
@@ -47,7 +46,7 @@ public class Kayttoliittyma {
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
     }
-    
+
     public void kaynnistaKayttoliittyma() throws IOException, MidiUnavailableException, FileNotFoundException, InvalidMidiDataException {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
@@ -95,13 +94,14 @@ public class Kayttoliittyma {
                         case "k" -> {
                             bigramMap = uiapu.muodostaBigramit(kappaleet);
                             System.out.println("Bigram parit muodostettu!");
-                        //System.out.println(bigramMap);
+                            //System.out.println(bigramMap);
                             uiapu.bigramitSolmuiksi(bigramMap, juuri);
-                    }
+                        }
                         case "e" -> {
                             System.out.println("Palataan käyttöliittymään.");
-                    }
-                        default -> System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
+                        }
+                        default ->
+                            System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
                     }
                     break;
                 case "t":
@@ -119,7 +119,7 @@ public class Kayttoliittyma {
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
             }
         }
-    
+
     }
-    
+
 }
