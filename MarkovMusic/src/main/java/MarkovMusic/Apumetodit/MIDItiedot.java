@@ -29,6 +29,6 @@ public class MIDItiedot {
 
     @Override
     public String toString() {
-        return "ajankohta: " + ajankohta + " savel: " + savel + " savelen kesto: " + kesto;
+        return "ajankohta: " + ajankohta + " savel: " + savel + " kesto: " + kesto;
     }
 }
