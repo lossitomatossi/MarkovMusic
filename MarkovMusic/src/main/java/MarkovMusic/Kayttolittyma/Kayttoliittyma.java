@@ -105,7 +105,8 @@ public class Kayttoliittyma {
                     }
                     break;
                 case "t":
-                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+//                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID();
                     System.out.println("Taikaprint");
                     for (List<MIDItiedot> raita : tiedot) {
                         System.out.println(raita.size());

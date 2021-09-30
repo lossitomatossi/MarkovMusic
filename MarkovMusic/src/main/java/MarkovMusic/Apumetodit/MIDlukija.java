@@ -25,7 +25,7 @@ public class MIDlukija {
     public MIDlukija() {
     }
 
-    public List<List<MIDItiedot>> lueMID(String MID) throws InvalidMidiDataException, IOException {
+    public List<List<MIDItiedot>> lueMID() throws InvalidMidiDataException, IOException {
         List<List<MIDItiedot>> kappaleenTiedot = new ArrayList<>();
         Sequence sequence = MidiSystem.getSequence(new File("musiikki/MID/bach-inventions.mid"));
 
@@ -33,7 +33,7 @@ public class MIDlukija {
             kappaleenTiedot.add(raidanTiedot(kappale));
 
         }
-        System.out.println("kappaleen listojen maara" + kappaleenTiedot.size());
+//        System.out.println("kappaleen listojen maara" + kappaleenTiedot.size());
         return kappaleenTiedot;
     }
 
