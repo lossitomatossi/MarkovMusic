@@ -31,4 +31,4 @@ ovat sama äänenkorkeus, "#" tarkoittaa että siirrytään korkeampaan ääneen
 eli siirtymistä matalampaan ääneen. Asialla väliä vain musiikkiteorian kannalta, muuten siirtyminen on vain 1 ylös tai 1 alas.
 
 ## Muuta tietoa
-Jokainen Track alkaa viestillä ``Command:192``` ja loppuu ``` Other message: class javax.sound.midi.Track$ImmutableEndOfTrack```
+Jokainen Track alkaa viestillä ```Command:192``` ja loppuu ``` Other message: class javax.sound.midi.Track$ImmutableEndOfTrack```
