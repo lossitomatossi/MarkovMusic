@@ -27,6 +27,14 @@ public class BigramTest {
 
     public BigramTest() {
     }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
     
     @Before
     public void setUp() {
@@ -38,6 +46,10 @@ public class BigramTest {
         tekstiKohde = new Bigram("A", "B");
         tekstiKohde2 = new Bigram("B", "A");
 
+    }
+
+    @After
+    public void tearDown() throws Exception {
     }
 
     /**

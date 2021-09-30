@@ -78,7 +78,7 @@ public class Bigram {
      *
      * @param obj
      * @Metodi Metodi bigram objektien vertailuun jota tarvitaan parien
-     * lukum��r�n laskemiseen
+     * lukum�r��n laskemiseen
      */
     @Override
     public boolean equals(Object obj) {
@@ -92,19 +92,8 @@ public class Bigram {
             return false;
         }
         final Bigram other = (Bigram) obj;
-        if (!Objects.equals(this.s1, other.s1)) {
-            return false;
-        }
-        if (!Objects.equals(this.s2, other.s2)) {
-            return false;
-        }
-        if (!Objects.equals(this.i1, other.i1)) {
-            return false;
-        }
-        if (!Objects.equals(this.i2, other.i2)) {
-            return false;
-        }
-        return true;
+        return !(!Objects.equals(this.s1, other.s1) || !Objects.equals(this.i1, other.i1)
+                || !Objects.equals(this.s2, other.s2) || !Objects.equals(this.i2, other.i2));
     }
 
     @Override
