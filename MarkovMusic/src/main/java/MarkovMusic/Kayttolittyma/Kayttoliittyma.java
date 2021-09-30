@@ -6,6 +6,7 @@ package MarkovMusic.Kayttolittyma;
  */
 
 import MarkovMusic.Algoritmit.ParinMuodostaja;
+import MarkovMusic.Apumetodit.MIDItiedot;
 import MarkovMusic.Apumetodit.MIDlukija;
 import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
@@ -103,9 +104,16 @@ public class Kayttoliittyma {
                         default -> System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
                     }
                     break;
-                case "testaus":
-//                    MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+                case "t":
+                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+                    System.out.println("Taikaprint");
+                    for (List<MIDItiedot> raita : tiedot) {
+                        System.out.println(raita.size());
+                        System.out.println("\n");
+                    }
+                    System.out.println(tiedot.get(1).get(1));
                     break;
+
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");

@@ -7,9 +7,9 @@ package MarkovMusic.Apumetodit;
 public class MIDItiedot {
     private final long ajankohta;
     private final int savel;
-    private final int kesto;
+    private final long kesto;
 
-    public MIDItiedot(long ajankohta, int savel, int kesto) {
+    public MIDItiedot(long ajankohta, int savel, long kesto) {
         this.ajankohta = ajankohta;
         this.savel = savel;
         this.kesto = kesto;
@@ -19,7 +19,7 @@ public class MIDItiedot {
         return ajankohta;
     }
 
-    public int getKesto() {
+    public long getKesto() {
         return kesto;
     }
 
@@ -29,9 +29,6 @@ public class MIDItiedot {
 
     @Override
     public String toString() {
-        return "@" + ajankohta + " savel " + savel + " nuotin kesto " + kesto;
+        return "ajankohta: " + ajankohta + " savel: " + savel + " savelen kesto: " + kesto;
     }
-    
-    
-    
 }
