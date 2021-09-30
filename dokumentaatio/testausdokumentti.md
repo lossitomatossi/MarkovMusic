@@ -10,7 +10,8 @@
 
 ### Testien toistaminen
 
-- syöte gradlew test jacocoTestReport
-
+```gradlew test jacocoTestReport```
+### Checkstyle
+```gradlew check```
 
 ### Graafinen näkymä testauksen tuloksille
