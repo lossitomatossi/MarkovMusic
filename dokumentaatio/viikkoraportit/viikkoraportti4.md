@@ -16,7 +16,10 @@
 - Ohjelma osaa hakea kaikki Markovin ketjuja varten vaadittavat tiedot MIDI tiedostoista
 
 ## Mitä opin
+- MIDI tiedostoista lisätietoja
 
 ## Vaikeuksia
 
+
 ## Seuraavaksi
+- Trie ja Markovin ketjujen tapahtuminen.
