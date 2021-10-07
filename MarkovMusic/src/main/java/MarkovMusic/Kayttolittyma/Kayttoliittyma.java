@@ -132,7 +132,14 @@ public class Kayttoliittyma {
                     lista2[0] = 2;
                     lista2[1] = 2;
                     lista2[2] = 2;
-                    t.lisaaTriehen(lista2);
+//                    t.lisaaTriehen(lista2);
+                    System.out.println(t.etsiJonoa(lista2));
+                    System.out.println(t.etsiJonoa(lista));
+                    int[] lista3 = new int[2];
+                    lista3[0] = 1;
+                    lista3[1] = 3;
+                    System.out.println(t.etsiJonoa(lista3));
+                    
                     break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"

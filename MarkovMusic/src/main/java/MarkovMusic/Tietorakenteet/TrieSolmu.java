@@ -109,4 +109,7 @@ public class TrieSolmu {
         printtaaSolmut();
     }
     
+    public boolean loytyySolmu(int arvo) {
+        return solmut[arvo] == null;
+    }
 }
