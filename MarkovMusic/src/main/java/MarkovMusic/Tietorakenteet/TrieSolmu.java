@@ -28,17 +28,17 @@ public class TrieSolmu {
         lukumaarat[x]++;
     }
     
-    public int juureenLisatty() {
+    public int lapsienLkm() {
         return yhteensa;
     }
     
     public int satunnaisluku() {
-        return r.nextInt(yhteensa);
+        return r.nextInt(yhteensa+1)-1;
     }
     
     public TrieSolmu valitseSolmu() {
         int x = satunnaisluku();
-        for (int i = 0; i < lapset.length; i++) {
+        for (int i = 0; i < lapset.length-1; i++) {
             x -= lukumaarat[i];
             if (x <= 0) {
                 return lapset[i];
