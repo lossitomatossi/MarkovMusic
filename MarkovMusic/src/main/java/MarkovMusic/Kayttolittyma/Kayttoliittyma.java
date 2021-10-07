@@ -11,6 +11,7 @@ import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
 import MarkovMusic.Tietorakenteet.Trie;
+import MarkovMusic.Tietorakenteet.TrieSolmu;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -104,7 +105,7 @@ public class Kayttoliittyma {
                             System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
                     }
                     break;
-                case "t":
+                case "t": //testausmetodi
 //                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
                     List<List<MIDItiedot>> tiedot = MIDlukija.lueMID();
                     System.out.println("Taikaprint");
@@ -114,7 +115,10 @@ public class Kayttoliittyma {
                     }
                     System.out.println(tiedot.get(1).get(1));
                     break;
-
+                case "m": //testausmetodi
+                    TrieSolmu[] ts = new TrieSolmu[128];
+                    System.out.println(ts[0]);
+                    break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
