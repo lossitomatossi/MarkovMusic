@@ -68,6 +68,7 @@ public class TrieSolmuTest {
         System.out.println("valitseSolmu2");
         ts.lisaaLapsi(0);
         assertNotEquals(null, ts.valitseSolmu());
+        assertEquals(TrieSolmu.class, ts.valitseSolmu().getClass());
     }
 
 }

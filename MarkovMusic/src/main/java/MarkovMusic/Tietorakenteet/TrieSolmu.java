@@ -36,14 +36,25 @@ public class TrieSolmu {
         return r.nextInt(yhteensa+1)-1;
     }
     
-    public TrieSolmu valitseSolmu() {
-        int x = satunnaisluku();
+    private TrieSolmu valitse(int satunnaisluku) {
+        int indeksi = 0;
         for (int i = 0; i < lapset.length-1; i++) {
-            x -= lukumaarat[i];
-            if (x <= 0) {
-                return lapset[i];
+            satunnaisluku -= lukumaarat[i];
+            if (satunnaisluku <= 0) {
+                indeksi = i;
+                break;
             }
         }
-        return null;
+        return lapset[indeksi];
+    }
+    
+    public TrieSolmu valitseSolmu() {
+        int x = satunnaisluku();
+        if (yhteensa == 0) {
+            return null;
+        }
+        else {
+            return valitse(x);
+        }
     }
 }
