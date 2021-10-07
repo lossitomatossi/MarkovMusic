@@ -116,8 +116,23 @@ public class Kayttoliittyma {
                     System.out.println(tiedot.get(1).get(1));
                     break;
                 case "m": //testausmetodi
-                    TrieSolmu[] ts = new TrieSolmu[128];
-                    System.out.println(ts[0]);
+                    Trie t = new Trie();
+                    int[] lista = new int[3];
+                    lista[0] = 1;
+                    lista[1] = 3;
+                    lista[2] = 6;
+                    t.lisaaTriehen(lista);
+                    
+                    int[] lista2 = new int[3];
+                    lista2[0] = 1;
+                    lista2[1] = 3;
+                    lista2[2] = 2;
+                    t.lisaaTriehen(lista2);
+                    
+                    lista2[0] = 2;
+                    lista2[1] = 2;
+                    lista2[2] = 2;
+                    t.lisaaTriehen(lista2);
                     break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"

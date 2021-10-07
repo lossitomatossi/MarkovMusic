@@ -1,5 +1,7 @@
 package MarkovMusic.Tietorakenteet;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -7,28 +9,38 @@ import java.util.Random;
  * @author tompp
  */
 public class TrieSolmu {
-    private final TrieSolmu[] lapset;
-    private final int[] lukumaarat;
+    private final TrieSolmu[] solmut;
+    private final int[] painot;
     private int yhteensa;
     Random r;
+    int solmunArvo;
+    
 
-    public TrieSolmu() {
-        this.lapset = new TrieSolmu[128];
-        this.lukumaarat = new int[128];
+    public TrieSolmu(int arvo) {
+        this.solmut = new TrieSolmu[128];
+        this.painot = new int[128];
         this.yhteensa = 0;
         this.r = new Random();
+        this.solmunArvo = arvo;
     }
     
-    public void lisaaLapsi(int x) {
-        
-        if (lapset[x] == null) {
-            lapset[x] = new TrieSolmu();
+        public TrieSolmu() {
+        this.solmut = new TrieSolmu[128];
+        this.painot = new int[128];
+        this.yhteensa = 0;
+        this.r = new Random();
+        this.solmunArvo = -99;
+    }
+    
+    public void lisaaSolmu(int x) {
+        if (solmut[x] == null) {
+            solmut[x] = new TrieSolmu(x);
         }
-        this.yhteensa++;
-        lukumaarat[x]++;
+        this.yhteensa+=1;
+        painot[x]++;
     }
     
-    public int lapsienLkm() {
+    public int painojenLkm() {
         return yhteensa;
     }
     
@@ -38,14 +50,14 @@ public class TrieSolmu {
     
     private TrieSolmu valitse(int satunnaisluku) {
         int indeksi = 0;
-        for (int i = 0; i < lapset.length-1; i++) {
-            satunnaisluku -= lukumaarat[i];
+        for (int i = 0; i < solmut.length-1; i++) {
+            satunnaisluku -= painot[i];
             if (satunnaisluku <= 0) {
                 indeksi = i;
                 break;
             }
         }
-        return lapset[indeksi];
+        return solmut[indeksi];
     }
     
     public TrieSolmu valitseSolmu() {
@@ -57,4 +69,44 @@ public class TrieSolmu {
             return valitse(x);
         }
     }
+    
+    public TrieSolmu palautaSolmu(int solmu) {
+        return solmut[solmu];
+    }
+
+    @Override
+    public String toString() {
+        return "Solmu " + solmunArvo + " johon on lisätty " 
+                + this.yhteensa + " painoa";
+    }
+    
+    private void printtaaSolmut() {
+        System.out.print("Solmun alasolmut ovat: ");
+        alaSolmut().forEach(x -> {
+            System.out.print(x + " ");
+        });
+        System.out.println("");
+    }
+    
+    public void poistaSolmu(int solmu) {
+        this.yhteensa -= painot[solmu];
+        painot[solmu] = 0;
+        solmut[solmu] = null;
+    }
+    
+    public ArrayList<Integer> alaSolmut() {
+        ArrayList<Integer> palautettava = new ArrayList();
+        for (TrieSolmu solmu : solmut) {
+            if (solmu != null) {
+                palautettava.add(solmu.solmunArvo);
+            }
+        }
+        return palautettava;
+    }
+    
+    public void printtaaTiedot() {
+        System.out.println(toString());
+        printtaaSolmut();
+    }
+    
 }

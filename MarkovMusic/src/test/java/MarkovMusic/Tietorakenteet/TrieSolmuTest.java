@@ -14,20 +14,20 @@ public class TrieSolmuTest {
 
     public TrieSolmuTest() {
     }
-
+    
     @Before
     public void setUp() {
-        this.ts = new TrieSolmu();
+        this.ts = new TrieSolmu(1);
     }
 
     /**
-     * Test of lisaaLapsi method, of class TrieSolmu.
+     * Test of lisaaSolmu method, of class TrieSolmu.
      */
     @Test
     public void testLisaaLapsi() {
         System.out.println("lisaaLapsi");
-        ts.lisaaLapsi(0);
-        assertEquals(1, ts.lapsienLkm());
+        ts.lisaaSolmu(0);
+        assertEquals(1, ts.painojenLkm());
     }
 
     /**
@@ -36,9 +36,9 @@ public class TrieSolmuTest {
     @Test
     public void testJuureenLisatty() {
         System.out.println("juureenLisatty");
-        assertEquals(0, ts.lapsienLkm());
-        ts.lisaaLapsi(1);
-        assertEquals(1, ts.lapsienLkm());
+        assertEquals(0, ts.painojenLkm());
+        ts.lisaaSolmu(1);
+        assertEquals(1, ts.painojenLkm());
     }
 
     /**
@@ -47,7 +47,7 @@ public class TrieSolmuTest {
     @Test
     public void testSatunnaisluku() {
         System.out.println("satunnaisluku");
-        Boolean tulos = ts.satunnaisluku() <= ts.lapsienLkm();
+        Boolean tulos = ts.satunnaisluku() <= ts.painojenLkm();
         assertEquals(true, tulos);
     }
 
@@ -66,9 +66,31 @@ public class TrieSolmuTest {
     @Test
     public void testValitseSolmu2() {
         System.out.println("valitseSolmu2");
-        ts.lisaaLapsi(0);
+        ts.lisaaSolmu(0);
         assertNotEquals(null, ts.valitseSolmu());
         assertEquals(TrieSolmu.class, ts.valitseSolmu().getClass());
+    }
+
+    /**
+     * Test of painojenLkm method, of class TrieSolmu.
+     */
+    @Test
+    public void testPainojenLkm() {
+        System.out.println("lapsienLkm");
+        assertEquals(0, ts.painojenLkm());
+        ts.lisaaSolmu(1);
+        assertEquals(1, ts.painojenLkm());
+    }
+
+    /**
+     * Test of palautaSolmu method, of class TrieSolmu.
+     */
+    @Test
+    public void testPalautaSolmu() {
+        System.out.println("palautaSolmu");
+        ts.lisaaSolmu(1);
+        assertEquals(TrieSolmu.class, ts.palautaSolmu(0).getClass());
+        assertNotEquals(null, ts.palautaSolmu(1));
     }
 
 }
