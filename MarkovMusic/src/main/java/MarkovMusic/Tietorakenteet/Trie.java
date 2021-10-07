@@ -38,7 +38,7 @@ public class Trie {
 
         for (int i = 0; i < jono.length; i++) {
             nykyinen = nykyinen.palautaSolmu(jono[i]);
-            
+
             if (nykyinen == null) {
                 return false;
             }

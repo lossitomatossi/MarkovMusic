@@ -122,13 +122,13 @@ public class Kayttoliittyma {
                     lista[1] = 3;
                     lista[2] = 6;
                     t.lisaaTriehen(lista);
-                    
+
                     int[] lista2 = new int[3];
                     lista2[0] = 1;
                     lista2[1] = 3;
                     lista2[2] = 2;
                     t.lisaaTriehen(lista2);
-                    
+
                     lista2[0] = 2;
                     lista2[1] = 2;
                     lista2[2] = 2;
@@ -139,7 +139,7 @@ public class Kayttoliittyma {
                     lista3[0] = 1;
                     lista3[1] = 3;
                     System.out.println(t.etsiJonoa(lista3));
-                    
+
                     break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
