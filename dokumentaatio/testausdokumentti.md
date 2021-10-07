@@ -1,6 +1,6 @@
 # Testaus
 
-### Testikattavuus (ilman kayttoliittymaa ~71%)
+### Testikattavuus (ilman kayttoliittymaa ~70%)
 ![](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/kuvat/Jacoco.PNG "Jacoco testikattavuus")
 
 ### Testaustavat
