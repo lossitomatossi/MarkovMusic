@@ -6,6 +6,7 @@
 ### Testaustavat
 
 - Käyttöliittymää testattu manuaalisesti ja suurin osa sovelluslogiikasta tavoitteena jättää käyttöliittymän ulkopuolelle
+- Käyttöliittymässä voi kokeilla Markovin ketjujen toteutusta komennolla "m"
 - Junit testit luokille
 
 ### Testien toistaminen
