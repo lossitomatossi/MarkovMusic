@@ -31,15 +31,15 @@ public class MIDlukijaTest {
         sequence = MidiSystem.getSequence(new File("musiikki/MID/bach-inventions.mid"));
         kappaleet = Arrays.asList(sequence.getTracks());
         ml =  new MIDlukija();
-        verrokki = ml.lueMID("musiikki/MID/bach-inventions.mid");
+        verrokki = ml.lueMIDI("musiikki/MID/bach-inventions.mid");
     }
 
     /**
      * Test of lueMID method, of class MIDlukija.
      */
 //    @Test
-//    public void lueMID(String MID) throws Exception {
-//        System.out.println("lueMID");
+//    public void lueMIDI(String MID) throws Exception {
+//        System.out.println("lueMIDI");
 //        System.out.println(kappaleet.size());
 //        System.out.println(verrokki.size());
 //        assertEquals(kappaleet.size(),verrokki.size());

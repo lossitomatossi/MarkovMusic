@@ -99,7 +99,7 @@ public class Kayttoliittyma {
                     }
                     for (String midi : valitutMidit) {
                         //tee jotain
-                        List<List<MIDItiedot>> tiedot = MIDlukija.lueMID(midi);
+                        List<List<MIDItiedot>> tiedot = MIDlukija.lueMIDI(midi);
                     }
                     break;
 
@@ -159,7 +159,7 @@ public class Kayttoliittyma {
                     }
                     break;
                 case "t": //testausmetodi
-                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMIDI("musiikki/MID/bach-inventions.mid");
 
                     System.out.println("Taikaprint");
                     for (List<MIDItiedot> raita : tiedot) {

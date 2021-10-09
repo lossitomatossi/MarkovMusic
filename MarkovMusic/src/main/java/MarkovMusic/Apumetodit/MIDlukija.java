@@ -43,12 +43,13 @@ public class MIDlukija {
      * Metodi joka palauttaa Listan MIDItiedot olio listoja, jossa jokainen
      * lista sisältää yksittäisen Track:in nuottitiedot.
      *
+     * @param tiedostonNimi Tiedosto jonka kaikki MIDItiedot halutaan
      * @return Palauttaa Listan MIDItiedot olio listoja
      * @throws InvalidMidiDataException Heittää virheen jos MIDI tiedoston
      * sisältämä data on virheellistä.
      * @throws IOException Heittää virheen jos IO operaatio estyy tai keskeytyy.
      */
-    public List<List<MIDItiedot>> lueMID(String tiedostonNimi) throws InvalidMidiDataException, IOException {
+    public List<List<MIDItiedot>> lueMIDI(String tiedostonNimi) throws InvalidMidiDataException, IOException {
         List<List<MIDItiedot>> kappaleenTiedot = new ArrayList<>();
         Sequence sequence = MidiSystem.getSequence(new File("musiikki/MID/" + tiedostonNimi));
 
@@ -75,5 +76,30 @@ public class MIDlukija {
             }
         }
         return tiedot;
+    }
+
+    /**
+     * Metodi jolla saa MIDI tiedoston yksittäisen raidan tiedot
+     *
+     * @param tiedostonNimi Mikä tiedosto on kyseessä
+     * @param raita Monesko raita pitäisi lukea
+     * @return Palauttaa tyhjän listan jos raitaa ei ole tai MIDItiedot listan
+     * @throws InvalidMidiDataException Heittää virheen jos MIDI tiedoston
+     * sisältämä data on virheellistä.
+     * @throws IOException Heittää virheen jos IO operaatio estyy tai keskeytyy.
+     */
+    public List<MIDItiedot> lueMIDIRaita(String tiedostonNimi, int raita) throws InvalidMidiDataException, IOException {
+        List<MIDItiedot> kappaleenTiedot = new ArrayList<>();
+        Sequence sequence = MidiSystem.getSequence(new File("musiikki/MID/" + tiedostonNimi));
+        int raidanNumero = 0;
+        for (Track kappale : sequence.getTracks()) {
+            if (raidanNumero == raita) {
+                kappaleenTiedot = (raidanTiedot(kappale));
+                break;
+            } else {
+                raidanNumero++;
+            }
+        }
+        return kappaleenTiedot;
     }
 }
