@@ -31,7 +31,7 @@ public class MIDlukijaTest {
         sequence = MidiSystem.getSequence(new File("musiikki/MID/bach-inventions.mid"));
         kappaleet = Arrays.asList(sequence.getTracks());
         ml =  new MIDlukija();
-        verrokki = ml.lueMID();
+        verrokki = ml.lueMID("musiikki/MID/bach-inventions.mid");
     }
 
     /**

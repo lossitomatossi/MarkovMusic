@@ -77,6 +77,7 @@ public class Kayttoliittyma {
                             + " Saman tiedoston voi valita useammin kuin kerran");
                     int montako = Integer.parseInt(br.readLine());
                     int indeksi;
+                    System.out.println("Valitse MIDIen indeksit");
                     for (int i = 0; i < montako; i++) {
                         indeksi = Integer.parseInt(br.readLine());
                         if (indeksi > midienNimet.size() - 1) {
@@ -86,11 +87,22 @@ public class Kayttoliittyma {
                         } else {
                             valitutMidit.add(midienNimet.get(indeksi));
                         }
-
                     }
                     System.out.println("Valitut MIDI tiedostot:");
                     System.out.println(valitutMidit);
                     break;
+                case "lv":
+                    System.out.println("Haluatko ladata valitsemasi MIDIT? (k/e)");
+                    komento = br.readLine().toLowerCase();
+                    if (!komento.equals("k")) {
+                        break;
+                    }
+                    for (String midi : valitutMidit) {
+                        //tee jotain
+                        List<List<MIDItiedot>> tiedot = MIDlukija.lueMID(midi);
+                    }
+                    break;
+
                 case "poistu":
                     System.out.println("Suljetaan Markov music...");
                     br.close();
@@ -147,8 +159,8 @@ public class Kayttoliittyma {
                     }
                     break;
                 case "t": //testausmetodi
-//                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
-                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID();
+                    List<List<MIDItiedot>> tiedot = MIDlukija.lueMID("musiikki/MID/bach-inventions.mid");
+
                     System.out.println("Taikaprint");
                     for (List<MIDItiedot> raita : tiedot) {
                         System.out.println(raita.size());

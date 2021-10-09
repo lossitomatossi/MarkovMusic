@@ -48,9 +48,9 @@ public class MIDlukija {
      * sisältämä data on virheellistä.
      * @throws IOException Heittää virheen jos IO operaatio estyy tai keskeytyy.
      */
-    public List<List<MIDItiedot>> lueMID() throws InvalidMidiDataException, IOException {
+    public List<List<MIDItiedot>> lueMID(String tiedostonNimi) throws InvalidMidiDataException, IOException {
         List<List<MIDItiedot>> kappaleenTiedot = new ArrayList<>();
-        Sequence sequence = MidiSystem.getSequence(new File("musiikki/MID/bach-inventions.mid"));
+        Sequence sequence = MidiSystem.getSequence(new File("musiikki/MID/" + tiedostonNimi));
 
         for (Track kappale : sequence.getTracks()) {
             kappaleenTiedot.add(raidanTiedot(kappale));
