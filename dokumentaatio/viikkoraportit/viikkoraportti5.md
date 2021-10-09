@@ -9,7 +9,8 @@
 | Suunnittelu | 30 min | pe |
 | Vertaisarviointi | 1 h | la |
 | Dokumentaatio | 30 min | la |
-| Koodia ja testejä | 6h | la |
+| Javadoc | 1 h | la |
+| Koodia ja testejä | 6 h | la |
 
 ## Edistyminen
 - Markovin ketjut voidaan toteuttaa haluttuun syvyyteen listoista muuttujia.
