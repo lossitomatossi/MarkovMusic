@@ -14,6 +14,7 @@
 ## Edistyminen
 - Markovin ketjut voidaan toteuttaa haluttuun syvyyteen listoista muuttujia.
 - Lisää testejä
+- Javadoc löytyy kokonaisuudessaan lähes kaikilta luokilta.
 
 ## Mitä opin
 - Markovin ketjujen aiheellisuudesta tälläiseen projektiin
