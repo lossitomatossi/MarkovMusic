@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,6 +36,7 @@ public class Kayttoliittyma {
     private Trie juuri;
     private MIDsoitin soitin;
     private MIDlukija MIDlukija;
+    private List<String> valitutMidit;
 
     public Kayttoliittyma() throws MidiUnavailableException {
         br = new BufferedReader(new InputStreamReader(System.in));
@@ -46,17 +48,49 @@ public class Kayttoliittyma {
         juuri = new Trie();
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
+        valitutMidit = new ArrayList<>();
     }
 
     public void kaynnistaKayttoliittyma() throws IOException, MidiUnavailableException, FileNotFoundException, InvalidMidiDataException {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
         while (true) {
-            List<String> komennot = new ArrayList();
             System.out.println("Anna komento (jos haluat nähdä komennot kirjoita komennot):");
             komento = br.readLine();
             komento = komento.toLowerCase();
             switch (komento) {
+                case "aloita":
+                    if (!valitutMidit.isEmpty()) {
+                        System.out.println("Haluatko poistaa aikaisemmat valinnat? (k/e)");
+                        komento = br.readLine().toLowerCase();
+                        if (komento.equals("k")) {
+                            valitutMidit.clear();
+                        }
+                    }
+                    System.out.println("Aloitetaan tiedostojen valinta Markovin"
+                            + " ketjuja varten.");
+                    List<String> midienNimet = uiapu.midit();
+                    for (int i = 0; i < midienNimet.size(); i++) {
+                        System.out.println(i + ". " + midienNimet.get(i));
+                    }
+                    System.out.println("Montako kappaletta haluat valita?"
+                            + " Saman tiedoston voi valita useammin kuin kerran");
+                    int montako = Integer.parseInt(br.readLine());
+                    int indeksi;
+                    for (int i = 0; i < montako; i++) {
+                        indeksi = Integer.parseInt(br.readLine());
+                        if (indeksi > midienNimet.size() - 1) {
+                            System.out.println("Indeksi on liian suuri! "
+                                    + "Kokeile uudelleen");
+                            i--;
+                        } else {
+                            valitutMidit.add(midienNimet.get(indeksi));
+                        }
+
+                    }
+                    System.out.println("Valitut MIDI tiedostot:");
+                    System.out.println(valitutMidit);
+                    break;
                 case "poistu":
                     System.out.println("Suljetaan Markov music...");
                     br.close();
@@ -73,6 +107,13 @@ public class Kayttoliittyma {
                     break;
                 case "MIDIT":
                     System.out.println(uiapu.midit());
+                    break;
+                case "markov":
+                    System.out.println("Monennenko asteen Markovin ketjun haluat luoda?");
+                    komento = br.readLine();
+                    int aste = Integer.parseInt(komento.toLowerCase());
+                    List<MIDItiedot> miditiedot = new ArrayList<>();
+                    juuri.lisaaMiditiedotTriehen(miditiedot, aste);
                     break;
                 case "soita":
                     soitin.soitaMid();
