@@ -11,13 +11,18 @@ public class Trie {
 
     private final TrieSolmu juuri;
 
+    /**
+     * Trie luokka toteuttaa Markovin ketjujen toiminnot ja ylläpitämisen
+     */
     public Trie() {
         this.juuri = new TrieSolmu();
     }
 
     /**
+     * Metodi jolla voidaan sijoittaa minkä tahansa kokoisia taulukoita Markovin
+     * ketjuun.
      *
-     * @param lista
+     * @param lista kokonaislukuja sisältävä lista
      */
     public void lisaaTaulukkoTriehen(int[] lista) {
         int[] kopio = lista;
@@ -36,6 +41,13 @@ public class Trie {
         }
     }
 
+    /**
+     * Metodi jolla voi tarkistaa löytyykö numerojono kokonaisuudessaan Trie
+     * rakenteesta
+     *
+     * @param jono Etsittävä taulukko kokonaislukuja
+     * @return Palauttaa totuusarvon jonon löytymisestä
+     */
     public boolean etsiJonoa(int[] jono) {
         TrieSolmu nykyinen = juuri;
 
@@ -49,6 +61,13 @@ public class Trie {
         return true;
     }
 
+    /**
+     * Metodi jolla voi lisätä MIDI tiedostosta saadut tiedot kerralla halun
+     * syvyiseen Markovin ketjuun
+     *
+     * @param lista MIDItiedostoja sisältävä lista
+     * @param syvyys Minkä syvyisen Markovin ketjun käyttäjä haluaa luoda
+     */
     public void lisaaMiditiedotTriehen(List<MIDItiedot> lista, int syvyys) {
         int koko = lista.size();
         int jakojaannos = koko % syvyys;

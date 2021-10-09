@@ -15,6 +15,12 @@ public class TrieSolmu {
     Random r;
     int solmunArvo = -99;
 
+    /**
+     * TrieSolmu on luokka joka toteuttaa Markovin ketjujen solmut
+     *
+     * @param arvo "avain" tai arvo joka jokaisella solmulla on identifiointia
+     * ja läpikäyntiä varten
+     */
     public TrieSolmu(int arvo) {
         this.solmut = new TrieSolmu[128];
         this.painot = new int[128];
@@ -23,6 +29,9 @@ public class TrieSolmu {
         this.solmunArvo = arvo;
     }
 
+    /**
+     * Parametriton muuttuja on käytössä Trien juurisolmujen luomiseksi
+     */
     public TrieSolmu() {
         this.solmut = new TrieSolmu[128];
         this.painot = new int[128];
@@ -30,6 +39,12 @@ public class TrieSolmu {
         this.r = new Random();
     }
 
+    /**
+     * Lisää tälle TrieSolmulle lapsen jos sitä ei ole vielä olemassa. Päivittää
+     * myös taulukot joilla ylläpidetään jokaisen lapsen todennäköisyyksiä.
+     *
+     * @param x Lapsen arvo.
+     */
     public void lisaaSolmu(int x) {
         if (solmut[x] == null) {
             solmut[x] = new TrieSolmu(x);
@@ -38,10 +53,22 @@ public class TrieSolmu {
         painot[x]++;
     }
 
+    /**
+     * Getteri yhteensa muuttujalle
+     *
+     * @return Kokonaisluku joka kertoo montako lasta on yritetty lisätä tälle
+     * solmulle
+     */
     public int painojenLkm() {
         return yhteensa;
     }
 
+    /**
+     * Metodi todennäköisyyksien arpomiseen, eroteltu testauksen
+     * varmentamiseksi.
+     *
+     * @return Palauttaa kokonaisluvun jota käytetään ketjun lasten valintaan.
+     */
     public int satunnaisluku() {
         return r.nextInt(yhteensa + 1) - 1;
     }
@@ -58,6 +85,12 @@ public class TrieSolmu {
         return solmut[indeksi];
     }
 
+    /**
+     * Metodi solmujen valitsemiseen.
+     *
+     * @return Palauttaa null jos solmulla ei ole lapsia, muuten valitsee
+     * todennäköisyydet huomioon ottaen jonkun lapsisolmun ja palauttaa sen.
+     */
     public TrieSolmu valitseSolmu() {
         int x = satunnaisluku();
         if (yhteensa == 0) {
@@ -67,6 +100,12 @@ public class TrieSolmu {
         }
     }
 
+    /**
+     * Metodi joka palauttaa suoraan solmut taulukon indeksin arvon
+     *
+     * @param solmu Indeksi jota etsitään solmut taulukosta
+     * @return null jos solmua ei ole, tai solmu sijainnissa solmut[solmu]
+     */
     public TrieSolmu palautaSolmu(int solmu) {
         return solmut[solmu];
     }
@@ -77,6 +116,11 @@ public class TrieSolmu {
                 + this.yhteensa + " painoa";
     }
 
+    /**
+     * Metodi joka listaa solmun lapsisolmut
+     * @return palauttaa String muuttujan jossa on kaikki solmun lapsisolmut
+     * listattuna
+     */
     public String solmunTiedot() {
         String info = "Solmun alasolmut ovat:";
 
@@ -87,12 +131,20 @@ public class TrieSolmu {
         return info;
     }
 
+    /**
+     *
+     * @param solmu
+     */
     public void poistaSolmu(int solmu) {
         this.yhteensa -= painot[solmu];
         painot[solmu] = 0;
         solmut[solmu] = null;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> alaSolmut() {
         ArrayList<Integer> palautettava = new ArrayList();
         for (TrieSolmu solmu : solmut) {
@@ -103,11 +155,19 @@ public class TrieSolmu {
         return palautettava;
     }
 
+    /**
+     *
+     */
     public void printtaaTiedot() {
         System.out.println(toString());
         System.out.println(solmunTiedot());
     }
 
+    /**
+     *
+     * @param arvo
+     * @return
+     */
     public boolean loytyySolmu(int arvo) {
         return painot[arvo] != 0;
     }

@@ -10,6 +10,12 @@ public class MIDItiedot {
     private final int savel;
     private final long kesto;
 
+    /**
+     * Miditiedot olion luomismetodi
+     * @param ajankohta ajankohta milloin MIDI event tapahtui
+     * @param savel MIDI eventin sävelkorkeus
+     * @param kesto MIDI eventin kesto (NOTE_OFF - NOTE_ON ajanhetket)
+     */
     public MIDItiedot(long ajankohta, int savel, long kesto) {
         this.ajankohta = ajankohta;
         this.savel = savel;

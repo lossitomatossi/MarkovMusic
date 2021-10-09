@@ -18,13 +18,36 @@ import javax.sound.midi.Track;
  */
 public class MIDlukija {
 
+    /**
+     * MIDI tiedostoissa käytetty arvo sille onko kyseinen event äänen alku.
+     */
     public static final int NOTE_ON = 0x90;
+
+    /**
+     * MIDI tiedostoissa käytetty arvo sille onko kyseinen event äänen loppu.*
+     */
     public static final int NOTE_OFF = 0x80;
+
+    /**
+     * Taulukko jota käytetään äänenkorkeuden nuoteiksi kääntämiseen.
+     */
     public static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
+    /**
+     * Muodostaa uuden MIDlukija olion.
+     */
     public MIDlukija() {
     }
 
+    /**
+     * Metodi joka palauttaa Listan MIDItiedot olio listoja, jossa jokainen
+     * lista sisältää yksittäisen Track:in nuottitiedot.
+     *
+     * @return Palauttaa Listan MIDItiedot olio listoja
+     * @throws InvalidMidiDataException Heittää virheen jos MIDI tiedoston
+     * sisältämä data on virheellistä.
+     * @throws IOException Heittää virheen jos IO operaatio estyy tai keskeytyy.
+     */
     public List<List<MIDItiedot>> lueMID() throws InvalidMidiDataException, IOException {
         List<List<MIDItiedot>> kappaleenTiedot = new ArrayList<>();
         Sequence sequence = MidiSystem.getSequence(new File("musiikki/MID/bach-inventions.mid"));
