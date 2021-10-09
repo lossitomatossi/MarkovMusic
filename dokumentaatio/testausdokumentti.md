@@ -1,6 +1,6 @@
 # Testaus
 
-### Testikattavuus (ilman kayttoliittymaa ~70%)
+### Testikattavuus (ilman kayttoliittymaa ~93%)
 ![](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/kuvat/Jacoco.PNG "Jacoco testikattavuus")
 
 ### Testaustavat
@@ -12,7 +12,8 @@
 ### Testien toistaminen
 
 ```gradlew test jacocoTestReport```
-Testikattavuus löytyy sijainnista: MarkovMusic\build\reports\jacoco\test\html\index.html 
+Testikattavuus löytyy sijainnista: MarkovMusic\build\reports\jacoco\test\html\index.html
+
 ### Checkstyle
 ```gradlew check```
 Checkstyle korjausehdotukset löytyvät sijannista:
