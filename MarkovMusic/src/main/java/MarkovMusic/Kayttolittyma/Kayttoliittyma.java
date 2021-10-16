@@ -4,7 +4,6 @@ package MarkovMusic.Kayttolittyma;
  *
  * @author tompp
  */
-import MarkovMusic.Algoritmit.ParinMuodostaja;
 import MarkovMusic.Apumetodit.MIDItiedot;
 import MarkovMusic.Apumetodit.MIDlukija;
 import MarkovMusic.Apumetodit.MIDsoitin;
@@ -15,7 +14,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,7 +28,6 @@ public class Kayttoliittyma {
     private final BufferedReader br;
     private final Tiedostonlukija tl;
     private final List<List<String>> kappaleet;
-    private final ParinMuodostaja pm;
     private final UIapu uiapu;
     private Map<Bigram, Double> bigramMap;
     private Trie juuri;
@@ -42,7 +39,6 @@ public class Kayttoliittyma {
         br = new BufferedReader(new InputStreamReader(System.in));
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
-        pm = new ParinMuodostaja();
         uiapu = new UIapu();
         bigramMap = new HashMap();
         juuri = new Trie();
@@ -139,24 +135,6 @@ public class Kayttoliittyma {
                     //komento = komento.toLowerCase();
                     List<String> wonderwall = tl.lataaNuotitTekstista("Wonderwall");
                     kappaleet.add(wonderwall);
-                    break;
-                case "bigram":
-                    System.out.println("Olet valinnut " + kappaleet.size() + " kappaletta. Haluatko tehda niista bigram parit? (K/E)");
-                    komento = br.readLine();
-                    komento = komento.toLowerCase();
-                    switch (komento) {
-                        case "k" -> {
-                            bigramMap = uiapu.muodostaBigramit(kappaleet);
-                            System.out.println("Bigram parit muodostettu!");
-                            //System.out.println(bigramMap);
-                            uiapu.bigramitSolmuiksi(bigramMap, juuri);
-                        }
-                        case "e" -> {
-                            System.out.println("Palataan käyttöliittymään.");
-                        }
-                        default ->
-                            System.out.println("Komentoa " + komento + "ei tunnistettu. Valitse K tai E.");
-                    }
                     break;
                 case "t": //testausmetodi
                     List<List<MIDItiedot>> tiedot = MIDlukija.lueMIDI("musiikki/MID/bach-inventions.mid");

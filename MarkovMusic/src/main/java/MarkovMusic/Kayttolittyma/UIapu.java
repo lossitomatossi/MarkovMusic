@@ -1,6 +1,5 @@
 package MarkovMusic.Kayttolittyma;
 
-import MarkovMusic.Algoritmit.ParinMuodostaja;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
 import MarkovMusic.Tietorakenteet.Trie;
@@ -16,7 +15,6 @@ import java.util.Map;
  */
 public class UIapu {
 
-    private ParinMuodostaja pm;
     private Tiedostonlukija tl;
 
     /**
@@ -24,7 +22,6 @@ public class UIapu {
      * käyttöliittymän ulkopuolelle.
      */
     public UIapu() {
-        this.pm = new ParinMuodostaja();
         this.tl = new Tiedostonlukija();
     }
 
@@ -71,53 +68,6 @@ public class UIapu {
     public List<String> midit() throws IOException {
         System.out.println("Ohjelman löytämät MID-tiedostot ovat:");
         return tl.listaaTiedostot("musiikki/MID/");
-    }
-
-    /**
-     * Metodi joka muodostaa uniikit siirtymäparit (ei todennäköisesti
-     * tarpeellinen)
-     *
-     * @param syote Lista String olio listoja, esimerkiksi usean tiedoston
-     * listat.
-     * @return Palauttaa Map<Bigram, Double> olion jossa on avaimena uniikki
-     * siirtymä ja arvona siirtymän esiintymismäärä.
-     */
-    public Map<Bigram, Double> muodostaBigramit(List<List<String>> syote) {
-        List<List<Bigram>> palautettava = bigramApu1(syote);
-
-        return bigramApu2(palautettava);
-    }
-
-    /**
-     * muodostaBigramit metodin apumetodi joka laskee uniikkien siirtymien
-     * lukumäärät
-     *
-     * @param bigramit Lista Bigram olio listoja joille laskeminen toteutetaan.
-     * @return Palauttaa Map<Bigram, Double> olion jossa on avaimena uniikki
-     * siirtymä ja arvona siirtymän esiintymismäärä.
-     */
-    public Map<Bigram, Double> bigramApu2(List<List<Bigram>> bigramit) {
-        Map<Bigram, Double> summat = new HashMap();
-        bigramit.forEach((var bigramLista) -> {
-            summat.putAll(pm.summaaNuottiParit(bigramLista));
-        });
-        return summat;
-    }
-
-    /**
-     * muodostaBigramit metodin apumetodi joka muodostaa jokaisen listan
-     * siirtymäparit
-     *
-     * @param syote Lista String olio listoja, esimerkiksi usean tiedoston
-     * listat.
-     * @return Palauttaa listan Bigram olio listoja.
-     */
-    public List<List<Bigram>> bigramApu1(List<List<String>> syote) {
-        List<List<Bigram>> bigramit = new ArrayList<>();
-        syote.forEach(kappale -> {
-            bigramit.add(pm.muodostaNuottiParit(kappale));
-        });
-        return bigramit;
     }
 
     /**

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MarkovMusic.Algoritmit;
+package MarkovMusic.algoritmit;
 
+import MarkovMusic.Algoritmit.MerkkienTuottaja;
 import java.util.List;
-import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
