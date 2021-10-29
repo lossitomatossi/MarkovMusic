@@ -28,7 +28,7 @@ public class Kayttoliittyma {
     private final List<List<String>> kappaleet;
     private Map<Bigram, Double> bigramMap;
     private Trie juuri;
-    private MIDsoitin soitin;
+    MIDsoitin soitin;
     private MIDlukija MIDlukija;
     private List<String> valitutMidit;
     private Scanner lukija;
@@ -55,7 +55,7 @@ public class Kayttoliittyma {
         this.lukija = lukija;
     }
 
-    public void kaynnistaKayttoliittyma() throws IOException, MidiUnavailableException, FileNotFoundException, InvalidMidiDataException {
+    public void kaynnistaKayttoliittyma() throws Exception {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
         while (true) {
@@ -83,7 +83,7 @@ public class Kayttoliittyma {
                     System.out.println(komennot());
                     break;
                 case "soita":
-                    soitin.soitaMid();
+                    soitaKappale();
                     break;
                 case "stop":
                     soitin.stop();
@@ -113,42 +113,32 @@ public class Kayttoliittyma {
     }
 
     /**
-     * Metodi jolla listataan kansion kappaleet sisältö
+     * Metodi jolla listataan halutun kansion sisältö. Käytössä olemassaolevien
+     * MIDI tiedostojen esittämiseen käyttäjälle.
      *
+     * @param kansio Kansion nimi jonka sisältö halutaan listata.
      * @return Palauttaa Listan String olioita jotka ovat tiedostojen nimiä.
      * @throws IOException Heittää virheen jos sijaintia ei ole olemassa.
      */
-    public List<String> kappaleet() throws IOException {
-        System.out.println("Ohjelman löytämät kappaleet ovat:");
-        return tl.listaaTiedostot("musiikki/kappaleet/");
+    public List<String> listaus(String kansio) throws IOException {
+        switch (kansio) {
+            case "midit" -> {
+                System.out.println("Ohjelman löytämät MIDI tiedostot ovat:");
+                return tl.listaaTiedostot("musiikki/MID/");
+            }
+            case "kappaleet", "sointutiedostot" ->
+                System.out.println("Tätä toimintoa ei ole vielä toteutettu");
+            default ->
+                System.out.println("Kansion " + kansio + " sisällön tulostamista"
+                        + "ei tueta");
+        }
+        return null;
     }
 
-    /**
-     * Metodi jolla listataan kansion sointutiedostot sisältö
-     *
-     * @return Palauttaa Listan String olioita jotka ovat tiedostojen nimiä.
-     * @throws IOException Heittää virheen jos sijaintia ei ole olemassa.
-     */
-    public List<String> sointutiedostot() throws IOException {
-        System.out.println("Ohjelman löytämät kappaleet ovat:");
-        return tl.listaaTiedostot("musiikki/sointutiedostot/");
-    }
-
-    /**
-     * Metodi jolla listataan kansion MID sisältö
-     *
-     * @return Palauttaa Listan String olioita jotka ovat tiedostojen nimiä.
-     * @throws IOException Heittää virheen jos sijaintia ei ole olemassa.
-     */
-    public List<String> midit() throws IOException {
-        System.out.println("Ohjelman löytämät MID-tiedostot ovat:");
-        return tl.listaaTiedostot("musiikki/MID/");
-    }
-
-    private void valitseMIDIt() throws IOException {
+    public void valitseMIDIt() throws IOException {
         System.out.println("Aloitetaan tiedostojen valinta Markovin"
                 + " ketjuja varten.");
-        List<String> midienNimet = midit();
+        List<String> midienNimet = listaus("midit");
         for (int i = 0; i < midienNimet.size(); i++) {
             System.out.println(i + ". " + midienNimet.get(i));
         }
@@ -169,12 +159,12 @@ public class Kayttoliittyma {
         }
     }
 
-    private void listaaValitut() {
+    public void listaaValitut() {
         System.out.println("Valitut MIDI tiedostot:");
         System.out.println(valitutMidit);
     }
 
-    private void valitseSyvyys() {
+    public void valitseSyvyys() {
         System.out.println("Valitse syvyys (syvyyden pitää olla suurempi kuin 1 ja pienempi kuin 7)");
         int syvyys = lukija.nextInt();
         if (!juuri.syvyysOikein()) {
@@ -184,6 +174,12 @@ public class Kayttoliittyma {
             }
             juuri.setSyvyys(syvyys);
         }
+    }
+
+    public void soitaKappale() throws Exception {
+        System.out.println("Minkä kappaleen haluat soittaa.");
+        String kappale = lukija.nextLine();
+        soitin.soitaMid();
     }
 
 }
