@@ -138,25 +138,30 @@ public class Kayttoliittyma {
     public void valitseMIDIt() throws IOException {
         System.out.println("Aloitetaan tiedostojen valinta Markovin"
                 + " ketjuja varten.");
+        System.out.println("Montako kappaletta haluat valita?"
+                + " Saman tiedoston voi valita useammin kuin kerran");
+        int montako = Integer.parseInt(lukija.nextLine());
         List<String> midienNimet = listaus("midit");
         for (int i = 0; i < midienNimet.size(); i++) {
             System.out.println(i + ". " + midienNimet.get(i));
         }
-        System.out.println("Montako kappaletta haluat valita?"
-                + " Saman tiedoston voi valita useammin kuin kerran");
-        int montako = Integer.parseInt(lukija.nextLine());
-        int indeksi;
         System.out.println("Valitse MIDIen indeksit");
         for (int i = 0; i < montako; i++) {
-            indeksi = Integer.parseInt(lukija.nextLine());
-            if (indeksi > midienNimet.size() - 1) {
+            valitseMidi(midienNimet.size(), midienNimet);
+        }
+    }
+    
+    public void valitseMidi(int maksimiIndeksi, List<String> midit) {
+        while (true) {
+            int indeksi = Integer.parseInt(lukija.nextLine());
+            if (indeksi > maksimiIndeksi - 1) {
                 System.out.println("Indeksi on liian suuri! "
                         + "Kokeile uudelleen");
-                i--;
             } else {
-                valitutMidit.add(midienNimet.get(indeksi));
+                valitutMidit.add(midit.get(indeksi));
             }
         }
+        
     }
 
     public void listaaValitut() {

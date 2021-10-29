@@ -179,8 +179,8 @@ public class KayttoliittymaTest {
         String[] tulosteet = tuloste.toString().split("\n");
         assertEquals(true, tulosteet[1].startsWith("Tätä"));
     }
-    
-        /**
+
+    /**
      * Test of listaus method, of class Kayttoliittyma.
      */
     @Test
@@ -191,6 +191,19 @@ public class KayttoliittymaTest {
         k.listaus("ei olemassa");
         String[] tulosteet = tuloste.toString().split("\n");
         assertEquals(true, tulosteet[1].startsWith("Kansion"));
+    }
+
+    /**
+     * Test of listaus method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testListaus3() throws Exception, MidiUnavailableException, MidiUnavailableException, MidiUnavailableException {
+        System.out.println("listaus3");
+        Scanner lukija = new Scanner("jotain");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.listaus("midit");
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Ohjelman"));
     }
 
     @Test
@@ -209,10 +222,26 @@ public class KayttoliittymaTest {
     @Test
     public void testValitseMIDIt() throws Exception {
         System.out.println("valitseMIDIt");
-        Kayttoliittyma instance = new Kayttoliittyma();
-        instance.valitseMIDIt();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Scanner lukija = new Scanner("0");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.valitseMIDIt();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Aloitetaan"));
+        assertEquals(true, tulosteet[2].startsWith("Montako"));
+    }
+
+    /**
+     * Test of valitseMIDIt method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testValitseMIDIt2() throws Exception {
+        System.out.println("valitseMIDIt2");
+        Scanner lukija = new Scanner("1\n1");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.valitseMIDIt();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Aloitetaan"));
+        assertEquals(true, tulosteet[2].startsWith("Montako"));
     }
 
     /**
