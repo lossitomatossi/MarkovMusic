@@ -10,22 +10,20 @@ import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Bigram;
 import MarkovMusic.Tietorakenteet.Trie;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 
 public class Kayttoliittyma {
 
     //private final kappaleet();
-    private final BufferedReader br;
     private final Tiedostonlukija tl;
     private final List<List<String>> kappaleet;
     private final UIapu uiapu;
@@ -34,9 +32,9 @@ public class Kayttoliittyma {
     private MIDsoitin soitin;
     private MIDlukija MIDlukija;
     private List<String> valitutMidit;
+    private Scanner lukija;
 
     public Kayttoliittyma() throws MidiUnavailableException {
-        br = new BufferedReader(new InputStreamReader(System.in));
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
         uiapu = new UIapu();
@@ -45,6 +43,19 @@ public class Kayttoliittyma {
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
         valitutMidit = new ArrayList<>();
+        lukija = new Scanner(System.in);
+    }
+
+    public Kayttoliittyma(Scanner lukija) throws MidiUnavailableException {
+        tl = new Tiedostonlukija();
+        kappaleet = new ArrayList<>();
+        uiapu = new UIapu();
+        bigramMap = new HashMap();
+        juuri = new Trie();
+        soitin = new MIDsoitin();
+        MIDlukija = new MIDlukija();
+        valitutMidit = new ArrayList<>();
+        this.lukija = lukija;
     }
 
     public void kaynnistaKayttoliittyma() throws IOException, MidiUnavailableException, FileNotFoundException, InvalidMidiDataException {
@@ -52,13 +63,13 @@ public class Kayttoliittyma {
         String komento;
         while (true) {
             System.out.println("Anna komento (jos haluat nähdä komennot kirjoita komennot):");
-            komento = br.readLine();
+            komento = lukija.nextLine();
             komento = komento.toLowerCase();
             switch (komento) {
                 case "aloita":
                     if (!valitutMidit.isEmpty()) {
                         System.out.println("Haluatko poistaa aikaisemmat valinnat? (k/e)");
-                        komento = br.readLine().toLowerCase();
+                        komento = lukija.nextLine().toLowerCase();
                         if (komento.equals("k")) {
                             valitutMidit.clear();
                         }
@@ -71,11 +82,11 @@ public class Kayttoliittyma {
                     }
                     System.out.println("Montako kappaletta haluat valita?"
                             + " Saman tiedoston voi valita useammin kuin kerran");
-                    int montako = Integer.parseInt(br.readLine());
+                    int montako = Integer.parseInt(lukija.nextLine());
                     int indeksi;
                     System.out.println("Valitse MIDIen indeksit");
                     for (int i = 0; i < montako; i++) {
-                        indeksi = Integer.parseInt(br.readLine());
+                        indeksi = Integer.parseInt(lukija.nextLine());
                         if (indeksi > midienNimet.size() - 1) {
                             System.out.println("Indeksi on liian suuri! "
                                     + "Kokeile uudelleen");
@@ -89,7 +100,7 @@ public class Kayttoliittyma {
                     break;
                 case "lv":
                     System.out.println("Haluatko ladata valitsemasi MIDIT? (k/e)");
-                    komento = br.readLine().toLowerCase();
+                    komento = lukija.nextLine().toLowerCase();
                     if (!komento.equals("k")) {
                         break;
                     }
@@ -100,8 +111,7 @@ public class Kayttoliittyma {
                     break;
 
                 case "poistu":
-                    System.out.println("Suljetaan Markov music...");
-                    br.close();
+                    System.out.println("Suljetaan");
                     soitin.sulje();
                     return;
                 case "komennot":
@@ -117,11 +127,7 @@ public class Kayttoliittyma {
                     System.out.println(uiapu.midit());
                     break;
                 case "markov":
-                    System.out.println("Monennenko asteen Markovin ketjun haluat luoda?");
-                    komento = br.readLine();
-                    int aste = Integer.parseInt(komento.toLowerCase());
-                    List<MIDItiedot> miditiedot = new ArrayList<>();
-                    juuri.lisaaMiditiedotTriehen(miditiedot, aste);
+                    luoMarkovinKetju();
                     break;
                 case "soita":
                     soitin.soitaMid();
@@ -205,6 +211,14 @@ public class Kayttoliittyma {
             }
         }
 
+    }
+
+    public void luoMarkovinKetju() {
+        System.out.println("Monennenko asteen Markovin ketjun haluat luoda?");
+        String komento = lukija.nextLine();
+        int aste = Integer.parseInt(komento.toLowerCase());
+        List<MIDItiedot> miditiedot = new ArrayList<>();
+        juuri.lisaaMiditiedotTriehen(miditiedot, aste);
     }
 
 }

@@ -73,7 +73,7 @@ public class TrieSolmu {
         return r.nextInt(yhteensa + 1) - 1;
     }
 
-    private TrieSolmu valitse(int satunnaisluku) {
+    public TrieSolmu valitse(int satunnaisluku) {
         int indeksi = 0;
         for (int i = 0; i < solmut.length - 1; i++) {
             satunnaisluku -= painot[i];

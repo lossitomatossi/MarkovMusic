@@ -10,6 +10,7 @@ mainClassName = 'MarkovMusic.Main'
 
 run {
     standardInput = System.in
+    standardOutput = System.out
 }
 
 repositories {

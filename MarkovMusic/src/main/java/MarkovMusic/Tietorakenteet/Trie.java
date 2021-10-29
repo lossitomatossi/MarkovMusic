@@ -10,12 +10,39 @@ import java.util.List;
 public class Trie {
 
     private final TrieSolmu juuri;
+    private int syvyys;
 
     /**
      * Trie luokka toteuttaa Markovin ketjujen toiminnot ja ylläpitämisen
      */
     public Trie() {
         this.juuri = new TrieSolmu();
+        this.syvyys = 0;
+    }
+
+    /**
+     * Trie luokka toteuttaa Markovin ketjujen toiminnot ja ylläpitämisen
+     *
+     * @param syvyys Markovin ketjun syvyys
+     */
+    public Trie(int syvyys) {
+        this.juuri = new TrieSolmu();
+        this.syvyys = syvyys;
+    }
+
+    public void setSyvyys(int syvyys) {
+        this.syvyys = syvyys;
+    }
+
+    public Boolean syvyysOikein() {
+        return syvyys != 0;
+    }
+
+    public int getSyvyys() {
+        if (syvyysOikein()) {
+            return syvyys;
+        }
+        return 0;
     }
 
     /**
@@ -86,23 +113,21 @@ public class Trie {
             System.out.println("J on: " + j + ", i on: " + i);
             lisattavat[j++] = lista.get(i).getSavel();
         }
-        if (jakojaannos > 0) {
-            lisaaLoputMidit(lista, apuIndeksi, j, syvyys);
-        }
     }
 
-    private void lisaaLoputMidit(List<MIDItiedot> lista, int apuIndeksi, int j, int syvyys) {
-        int koko = lista.size();
-        int jakojaannos = koko % syvyys;
-        if (j == syvyys) {
-            System.out.println("Nollataan välissä");
-            j = 0;
+    /**
+     * Metodi joka arpoo aloituskohdan Markovin ketjua varten, ns. ensimmaisen
+     * arvon jolla ketjua aletaan kulkemaan.
+     *
+     */
+    public int[] arvoAloitusArvot() {
+        int[] aloitusArvot = new int[syvyys - 1];
+        TrieSolmu ts;
+        for (int i = 0; i < syvyys; i++) {
+            ts = juuri.valitse(juuri.satunnaisluku());
+            aloitusArvot[i] = ts.solmunArvo;
         }
-        int[] lisattavat2 = new int[jakojaannos + 1];
-        for (int i = apuIndeksi; i < koko; i++) {
-            System.out.println("J on: " + j + " i on: " + i);
-            lisattavat2[j++] = lista.get(i).getSavel();
-        }
-        lisaaTaulukkoTriehen(lisattavat2);
+        return aloitusArvot;
     }
+
 }

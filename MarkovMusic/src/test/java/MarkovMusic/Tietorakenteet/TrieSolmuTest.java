@@ -112,6 +112,19 @@ public class TrieSolmuTest {
     }
 
     /**
+     * Test2 of lisaaSolmu method, of class TrieSolmu.
+     */
+    @Test
+    public void testLisaaSolmu2() {
+        System.out.println("lisaaSolmu2");
+        ts.lisaaSolmu(0);
+        int eka = ts.painojenLkm();
+        ts.lisaaSolmu(0);
+        assertEquals(true, ts.loytyySolmu(0));
+        assertTrue(eka < ts.painojenLkm());
+    }
+
+    /**
      * Test of toString method, of class TrieSolmu.
      */
     @Test
@@ -162,6 +175,15 @@ public class TrieSolmuTest {
         System.out.println("loytyySolmu");
         ts.lisaaSolmu(2);
         assertEquals(true, ts.loytyySolmu(2));
+    }
+
+    @Test
+    public void testPrinttaaTiedot() {
+        System.out.println("printtaaTiedot");
+        ts.lisaaSolmu(40);
+        ts.printtaaTiedot();
+        assertEquals("Solmu 1 johon on lisätty 1 painoa", ts.toString());
+        assertEquals("Solmun alasolmut ovat: 40", ts.solmunTiedot());
     }
 
 }
