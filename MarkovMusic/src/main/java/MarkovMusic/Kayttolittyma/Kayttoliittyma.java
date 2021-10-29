@@ -167,13 +167,12 @@ public class Kayttoliittyma {
     public void valitseSyvyys() {
         System.out.println("Valitse syvyys (syvyyden pitää olla suurempi kuin 1 ja pienempi kuin 7)");
         int syvyys = lukija.nextInt();
-        if (!juuri.syvyysOikein()) {
-            if (syvyys < 2 || syvyys > 6) {
-                System.out.println("Syvyys ei ole välillä 2-6, syötä uusi syvyys tältä väliltä.");
-                syvyys = lukija.nextInt();
-            }
-            juuri.setSyvyys(syvyys);
+        if (syvyys < 2 || syvyys > 6) {
+            System.out.println("Syvyys ei ole välillä 2-6, syötä uusi syvyys tältä väliltä.");
+            syvyys = lukija.nextInt();
         }
+        juuri.setSyvyys(syvyys);
+
     }
 
     public void soitaKappale() throws Exception {

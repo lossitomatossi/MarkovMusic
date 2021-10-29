@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +27,6 @@ public class KayttoliittymaTest {
 
     }
 
-    /**
-     * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
-     */
-//    @Test
-//    public void testKaynnistaKayttoliittyma() throws Exception {
-//        System.out.println("kaynnistaKayttoliittyma");
-//        Kayttoliittyma instance = new Kayttoliittyma();
-//        instance.kaynnistaKayttoliittyma();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
     @Test
     public void testaaPoistu() throws Exception {
         Scanner lukija = new Scanner("poistu");
@@ -46,14 +36,6 @@ public class KayttoliittymaTest {
         assertEquals(true, tulosteet[2].startsWith("Suljetaan"));
     }
 
-//    @Test
-//    public void testaaMarkovinKetjunLuonti() throws Exception {
-//        Scanner lukija = new Scanner("2\n2\npoistu");
-//        Kayttoliittyma k = new Kayttoliittyma(lukija);
-//        k.kaynnistaKayttoliittyma();
-//        String[] tulosteet = tuloste.toString().split("\n");
-//        assertEquals(true, tulosteet[2].startsWith("Valitse"));
-//    }
     @Test
     public void testaaVaaraSyote() throws Exception {
         Scanner lukija = new Scanner("vaara\npoistu");
@@ -170,7 +152,7 @@ public class KayttoliittymaTest {
         Scanner lukija = new Scanner("soita\npoistu");
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.kaynnistaKayttoliittyma();
-        assertEquals(true, k.soitin.sequencerPyorii());
+        assertEquals(true, k.soitin.sequencerAuki());
     }
 
     /**
@@ -189,26 +171,83 @@ public class KayttoliittymaTest {
      * Test of listaus method, of class Kayttoliittyma.
      */
     @Test
-    public void testListaus() throws Exception {
+    public void testListaus() throws Exception, MidiUnavailableException, MidiUnavailableException, MidiUnavailableException {
         System.out.println("listaus");
-        String kansio = "";
-        Kayttoliittyma k = new Kayttoliittyma();
-        List<String> expResult = null;
-        List<String> result = k.listaus(kansio);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Scanner lukija = new Scanner("jotain");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.listaus("kappaleet");
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Tätä"));
     }
     
+        /**
+     * Test of listaus method, of class Kayttoliittyma.
+     */
     @Test
-    public void listaaValitut() throws Exception {
+    public void testListaus2() throws Exception, MidiUnavailableException, MidiUnavailableException, MidiUnavailableException {
+        System.out.println("listaus2");
+        Scanner lukija = new Scanner("jotain");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.listaus("ei olemassa");
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Kansion"));
+    }
+
+    @Test
+    public void testListaaValitut() throws Exception {
         System.out.println("listaa valitut");
         Scanner lukija = new Scanner("soita\npoistu");
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.listaaValitut();
         String[] tulosteet = tuloste.toString().split("\n");
         assertEquals(true, tulosteet[1].startsWith("Valitut"));
-//        assertEquals(" ", tulosteet[2]);
     }
 
+    /**
+     * Test of valitseMIDIt method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testValitseMIDIt() throws Exception {
+        System.out.println("valitseMIDIt");
+        Kayttoliittyma instance = new Kayttoliittyma();
+        instance.valitseMIDIt();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of valitseSyvyys method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testValitseSyvyys() throws Exception {
+        System.out.println("syvyys liian suuri");
+        Scanner lukija = new Scanner("8\n8");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.valitseSyvyys();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Valitse"));
+        assertEquals(true, tulosteet[2].startsWith("Syvyys"));
+    }
+
+    @Test
+    public void testValitseSyvyys2() throws Exception {
+        System.out.println("syvyys liian pieni");
+        Scanner lukija = new Scanner("0\n0");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.valitseSyvyys();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Valitse"));
+        assertEquals(true, tulosteet[2].startsWith("Syvyys"));
+    }
+
+    /**
+     * Test of soitaKappale method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testSoitaKappale() throws Exception {
+        Scanner lukija = new Scanner("soita\npoistu");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.soitaKappale();
+        assertEquals(true, k.soitin.sequencerAuki());
+    }
 }
