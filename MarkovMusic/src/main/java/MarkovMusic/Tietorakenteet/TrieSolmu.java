@@ -1,6 +1,7 @@
 package MarkovMusic.Tietorakenteet;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -10,8 +11,7 @@ import java.util.Random;
 public class TrieSolmu {
 
     private final TrieSolmu[] solmut;
-    private final int[] painot;
-    private int yhteensa;
+    private final ArrayList<Integer> painot;
     Random r;
     int solmunArvo = -99;
 
@@ -23,8 +23,7 @@ public class TrieSolmu {
      */
     public TrieSolmu(int arvo) {
         this.solmut = new TrieSolmu[128];
-        this.painot = new int[128];
-        this.yhteensa = 0;
+        this.painot = new ArrayList<>();
         this.r = new Random();
         this.solmunArvo = arvo;
     }
@@ -34,8 +33,7 @@ public class TrieSolmu {
      */
     public TrieSolmu() {
         this.solmut = new TrieSolmu[128];
-        this.painot = new int[128];
-        this.yhteensa = 0;
+        this.painot = new ArrayList<>();
         this.r = new Random();
     }
 
@@ -49,8 +47,7 @@ public class TrieSolmu {
         if (solmut[x] == null) {
             solmut[x] = new TrieSolmu(x);
         }
-        this.yhteensa += 1;
-        painot[x]++;
+        painot.add(x);
     }
 
     /**
@@ -60,7 +57,7 @@ public class TrieSolmu {
      * solmulle
      */
     public int painojenLkm() {
-        return yhteensa;
+        return painot.size();
     }
 
     /**
@@ -70,19 +67,16 @@ public class TrieSolmu {
      * @return Palauttaa kokonaisluvun jota käytetään ketjun lasten valintaan.
      */
     public int satunnaisluku() {
-        return r.nextInt(yhteensa + 1) - 1;
+        if (painot.isEmpty()) {
+            return -1;
+        }
+        return r.nextInt(painojenLkm());
     }
 
     public TrieSolmu valitse(int satunnaisluku) {
-        int indeksi = 0;
-        for (int i = 0; i < solmut.length - 1; i++) {
-            satunnaisluku -= painot[i];
-            if (satunnaisluku <= 0) {
-                indeksi = i;
-                break;
-            }
-        }
-        return solmut[indeksi];
+        Collections.sort(painot);
+        int valittu = painot.get(satunnaisluku);
+        return solmut[valittu];
     }
 
     /**
@@ -93,7 +87,7 @@ public class TrieSolmu {
      */
     public TrieSolmu valitseSolmu() {
         int x = satunnaisluku();
-        if (yhteensa == 0) {
+        if (painot.isEmpty()) {
             return null;
         } else {
             return valitse(x);
@@ -113,7 +107,7 @@ public class TrieSolmu {
     @Override
     public String toString() {
         return "Solmu " + this.solmunArvo + " johon on lisätty "
-                + this.yhteensa + " painoa";
+                + painot.size() + " painoa";
     }
 
     /**
@@ -136,8 +130,11 @@ public class TrieSolmu {
      * @param solmu
      */
     public void poistaSolmu(int solmu) {
-        this.yhteensa -= painot[solmu];
-        painot[solmu] = 0;
+        for (int i = 0; i < painot.size(); i++) {
+            if (painot.get(i) == solmu) {
+                painot.remove(i);
+            }
+        }
         solmut[solmu] = null;
     }
 
@@ -169,6 +166,6 @@ public class TrieSolmu {
      * @return
      */
     public boolean loytyySolmu(int arvo) {
-        return painot[arvo] != 0;
+        return painot.contains(arvo);
     }
 }

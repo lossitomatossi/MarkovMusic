@@ -1,12 +1,8 @@
 package MarkovMusic.Tietorakenteet;
 
-import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.BeforeClass;
 
 /**
  *
@@ -23,11 +19,7 @@ public class TrieSolmuTest {
     public void setUp() {
         this.ts = new TrieSolmu(1);
     }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
+    
     /**
      * Test of lisaaSolmu method, of class TrieSolmu.
      */
@@ -55,8 +47,9 @@ public class TrieSolmuTest {
     @Test
     public void testSatunnaisluku() {
         System.out.println("satunnaisluku");
-        Boolean tulos = ts.satunnaisluku() <= ts.painojenLkm();
-        assertEquals(true, tulos);
+        assertEquals(-1, ts.satunnaisluku());
+        ts.lisaaSolmu(0);
+        assertNotEquals(-1, ts.satunnaisluku());
     }
 
     /**
@@ -145,6 +138,17 @@ public class TrieSolmuTest {
         assertEquals(true, ts.loytyySolmu(0));
         ts.poistaSolmu(0);
         assertEquals(false, ts.loytyySolmu(0));
+    }
+    /**
+     * Test of poistaSolmu method, of class TrieSolmu.
+     */
+    @Test
+    public void testPoistaSolmu2() {
+        System.out.println("poistaSolmu2");
+        ts.lisaaSolmu(0);
+        assertEquals(true, ts.loytyySolmu(0));
+        ts.poistaSolmu(1);
+        assertEquals(true, ts.loytyySolmu(0));
     }
 
     /**

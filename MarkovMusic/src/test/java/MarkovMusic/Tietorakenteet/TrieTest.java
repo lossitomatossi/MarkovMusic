@@ -1,6 +1,8 @@
 package MarkovMusic.Tietorakenteet;
 
 import MarkovMusic.Apumetodit.MIDItiedot;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -34,30 +36,18 @@ public class TrieTest {
     }
 
     /**
-     * Test of syvyysOikein method, of class Trie.
-     */
-    @Test
-    public void testSyvyysOikein() {
-        System.out.println("syvyysOikein");
-        Trie instance = new Trie();
-        Boolean expResult = null;
-        Boolean result = instance.syvyysOikein();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of lisaaTaulukkoTriehen method, of class Trie.
      */
     @Test
     public void testLisaaTaulukkoTriehen() {
         System.out.println("lisaaTaulukkoTriehen");
-        int[] lista = null;
-        Trie instance = new Trie();
-        instance.lisaaTaulukkoTriehen(lista);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int[] jono = new int[3];
+        jono[0] = 1; jono[1] = 2; jono[2] = 3;
+        Trie t = new Trie();
+        TrieSolmu juuri = t.getJuuri();
+        assertEquals(null, juuri.palautaSolmu(77));
+        t.lisaaTaulukkoTriehen(jono);
+        assertNotEquals(null, juuri.palautaSolmu(1));
     }
 
     /**
@@ -66,13 +56,14 @@ public class TrieTest {
     @Test
     public void testEtsiJonoa() {
         System.out.println("etsiJonoa");
-        int[] jono = null;
-        Trie instance = new Trie();
-        boolean expResult = false;
-        boolean result = instance.etsiJonoa(jono);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int[] jono = new int[3];
+        jono[0] = 1; jono[1] = 2; jono[2] = 3; 
+        Trie t = new Trie();
+        boolean tulos = t.etsiJonoa(jono);
+        assertEquals(false, tulos);
+        t.lisaaTaulukkoTriehen(jono);
+        tulos = t.etsiJonoa(jono);
+        assertEquals(true, tulos);
     }
 
     /**
@@ -81,12 +72,18 @@ public class TrieTest {
     @Test
     public void testLisaaMiditiedotTriehen() {
         System.out.println("lisaaMiditiedotTriehen");
-        List<MIDItiedot> lista = null;
-        int syvyys = 0;
-        Trie instance = new Trie();
-        instance.lisaaMiditiedotTriehen(lista, syvyys);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<MIDItiedot> lista = new ArrayList<>();
+        MIDItiedot eka = new MIDItiedot(0, 0, 30);
+        MIDItiedot toka = new MIDItiedot(1, 1, 30);
+        MIDItiedot kolmas = new MIDItiedot(2, 2, 30);
+        MIDItiedot neljas = new MIDItiedot(3, 3, 30);
+        MIDItiedot viides = new MIDItiedot(4, 4, 30);
+        Collections.addAll(lista, eka, toka, kolmas, neljas, viides);
+        int syvyys = 2;
+        Trie t = new Trie();
+        t.lisaaMiditiedotTriehen(lista, syvyys);
+        int[] jono = {2,3};
+        assertEquals(true, t.etsiJonoa(jono));
     }
 
     /**
@@ -95,10 +92,11 @@ public class TrieTest {
     @Test
     public void testArvoAloitusArvot() {
         System.out.println("arvoAloitusArvot");
-        Trie instance = new Trie(3);
-        int[] oletettu = new int[3];
+        Trie t = new Trie(3);
+        int[] oletettu = {1,2,3};
+        t.lisaaTaulukkoTriehen(oletettu);
         oletettu[0] = 1;
-        int[] tulos = instance.arvoAloitusArvot();
-        assertEquals(oletettu.length, tulos.length);
+        int[] tulos = t.arvoAloitusArvot();
+        assertEquals(2, tulos.length);
     }
 }

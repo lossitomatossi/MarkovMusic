@@ -5,10 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import javax.sound.midi.MidiUnavailableException;
 
@@ -243,6 +240,8 @@ public class KayttoliittymaTest {
         assertEquals(true, tulosteet[1].startsWith("Aloitetaan"));
         assertEquals(true, tulosteet[2].startsWith("Montako"));
     }
+    
+    
 
     /**
      * Test of valitseSyvyys method, of class Kayttoliittyma.

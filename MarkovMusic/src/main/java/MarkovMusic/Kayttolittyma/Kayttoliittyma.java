@@ -8,17 +8,12 @@ import MarkovMusic.Apumetodit.MIDItiedot;
 import MarkovMusic.Apumetodit.MIDlukija;
 import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
-import MarkovMusic.Tietorakenteet.Bigram;
 import MarkovMusic.Tietorakenteet.Trie;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiUnavailableException;
 
 public class Kayttoliittyma {
@@ -26,7 +21,6 @@ public class Kayttoliittyma {
     //private final kappaleet();
     private final Tiedostonlukija tl;
     private final List<List<String>> kappaleet;
-    private Map<Bigram, Double> bigramMap;
     private Trie juuri;
     MIDsoitin soitin;
     private MIDlukija MIDlukija;
@@ -36,7 +30,6 @@ public class Kayttoliittyma {
     public Kayttoliittyma() throws MidiUnavailableException {
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
-        bigramMap = new HashMap();
         juuri = new Trie();
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
@@ -47,7 +40,6 @@ public class Kayttoliittyma {
     public Kayttoliittyma(Scanner lukija) throws MidiUnavailableException {
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
-        bigramMap = new HashMap();
         juuri = new Trie();
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
@@ -58,6 +50,7 @@ public class Kayttoliittyma {
     public void kaynnistaKayttoliittyma() throws Exception {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
+
         while (true) {
             System.out.println("Anna komento (jos haluat nähdä komennot kirjoita komennot):");
             komento = lukija.nextLine();
@@ -150,7 +143,7 @@ public class Kayttoliittyma {
             valitseMidi(midienNimet.size(), midienNimet);
         }
     }
-    
+
     public void valitseMidi(int maksimiIndeksi, List<String> midit) {
         while (true) {
             int indeksi = Integer.parseInt(lukija.nextLine());
@@ -161,7 +154,7 @@ public class Kayttoliittyma {
                 valitutMidit.add(midit.get(indeksi));
             }
         }
-        
+
     }
 
     public void listaaValitut() {

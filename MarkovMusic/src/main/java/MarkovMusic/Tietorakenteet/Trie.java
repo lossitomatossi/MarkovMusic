@@ -1,6 +1,7 @@
 package MarkovMusic.Tietorakenteet;
 
 import MarkovMusic.Apumetodit.MIDItiedot;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -52,18 +53,12 @@ public class Trie {
      * @param lista kokonaislukuja sisältävä lista
      */
     public void lisaaTaulukkoTriehen(int[] lista) {
-        int[] kopio = lista;
-
         TrieSolmu nykyinen = juuri;
 
-        for (int luku : kopio) {
-
+        for (int luku : lista) {
             if (nykyinen.palautaSolmu(luku) == null) {
                 nykyinen.lisaaSolmu(luku);
             }
-
-//            nykyinen.printtaaTiedot();
-//            System.out.println(" ");
             nykyinen = nykyinen.palautaSolmu(luku);
         }
     }
@@ -105,13 +100,14 @@ public class Trie {
         int j = 0;
         int[] lisattavat = new int[syvyys];
         for (int i = 0; i < apuIndeksi; i++) {
-
+//            System.out.println("J on: " + j + ", i on: " + i);
+            lisattavat[j++] = lista.get(i).getSavel();
             if (j == syvyys) {
+//                System.out.println(Arrays.toString(lisattavat));
                 lisaaTaulukkoTriehen(lisattavat);
                 j = 0;
             }
-            System.out.println("J on: " + j + ", i on: " + i);
-            lisattavat[j++] = lista.get(i).getSavel();
+            
         }
     }
 
@@ -122,12 +118,19 @@ public class Trie {
      */
     public int[] arvoAloitusArvot() {
         int[] aloitusArvot = new int[syvyys - 1];
-        TrieSolmu ts;
-        for (int i = 0; i < syvyys; i++) {
-            ts = juuri.valitse(juuri.satunnaisluku());
+        TrieSolmu ts = getJuuri();
+        for (int i = 0; i < syvyys-1; i++) {
+            System.out.println(ts.solmunTiedot());
+            int satunnaisluku = ts.satunnaisluku();
+            System.out.println("Satunnaisluku: " + satunnaisluku);
+            ts = ts.valitse(satunnaisluku);
             aloitusArvot[i] = ts.solmunArvo;
         }
         return aloitusArvot;
+    }
+    
+    public TrieSolmu getJuuri() {
+        return this.juuri;
     }
 
 }
