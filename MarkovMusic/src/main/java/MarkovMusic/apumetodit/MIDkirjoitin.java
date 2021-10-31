@@ -7,23 +7,39 @@ import java.util.ArrayList;
 import javax.sound.midi.*;
 
 /**
- *
+ * 
  * @author tompp
  */
 public class MIDkirjoitin {
 
+    /** Koska projektin tarkoituksena ei ollut toteuttaa tiedostojen tallennusta, käytettiin mallina Karl Brownin esimerkkiä osoitteessa 
+    http://www.automatic-pilot.com/midifile.html
+    **/
+
     private String tiedostoNimi;
 
+    /**
+     * Luo MIDIkirjoittimen joka tallentaa halutun nimisen tiedoston
+     * @param tiedostoNimi
+     */
     public MIDkirjoitin(String tiedostoNimi) {
         this.tiedostoNimi = tiedostoNimi;
     }
 
+    /**
+     * Luo oletus MIDkirjoittimen
+     */
     public MIDkirjoitin() {
         this.tiedostoNimi = "oletus.mid";
     }
-    
-    
 
+    /**
+     * Metodi joka toteuttaa tiedoston luomisen ja tallentamisen
+     * @param nuotit lista äänenkorkeuksia
+     * @param ajoitus lista ajanhetkiä
+     * @throws InvalidMidiDataException MIDIdata virheellinen
+     * @throws IOException IO ei saatavilla
+     */
     public void tallennaMidi(ArrayList<Integer> nuotit, ArrayList<MIDItiedot> ajoitus) throws InvalidMidiDataException, IOException {
         Sequence s = new Sequence(javax.sound.midi.Sequence.PPQ, 24);
 

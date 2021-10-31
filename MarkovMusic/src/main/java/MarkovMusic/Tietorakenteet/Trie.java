@@ -35,6 +35,10 @@ public class Trie {
         this.syvyys = syvyys;
     }
 
+    /**
+     * Kertoo onko syvyys oletusArvo vai ei
+     * @return totuusarvo
+     */
     public Boolean syvyysOikein() {
         return syvyys != 0;
     }
@@ -83,6 +87,12 @@ public class Trie {
         return true;
     }
 
+    /**
+     * Arpoo seuraavan merkin annetun jonon perusteella
+     * @param jono taulukko numeroita joka on Markovin ketjun asteen
+     * mukainen
+     * @return palauttaa seuraavan arvon kokonaislukuna
+     */
     public int seuraava(int[] jono) {
         TrieSolmu nykyinen = juuri;
         for (int i = 0; i < jono.length; i++) {
@@ -132,19 +142,26 @@ public class Trie {
         int[] aloitusArvot = new int[syvyys - 1];
         TrieSolmu ts = getJuuri();
         for (int i = 0; i < syvyys - 1; i++) {
-//            System.out.println(ts.solmunTiedot());
             int satunnaisluku = ts.satunnaisluku();
-//            System.out.println("Satunnaisluku: " + satunnaisluku);
             ts = ts.valitse(satunnaisluku);
             aloitusArvot[i] = ts.solmunArvo;
         }
         return aloitusArvot;
     }
 
+    /**
+     * Palauttaa ketjun juurisolmun
+     * @return juurisolmu
+     */
     public TrieSolmu getJuuri() {
         return this.juuri;
     }
 
+    /**
+     * Luo uusia arvoja
+     * @param montako maksimiarvo
+     * @return lista numeroita joka vastaa Markovin ketjun tutkimisen tulosta
+     */
     public ArrayList<Integer> luoUutta(int montako) {
         if (montako < syvyys) {
             return new ArrayList<>();
@@ -172,13 +189,18 @@ public class Trie {
         return nuotit;
     }
 
+    /**
+     * Siirtää taulukon arvoja yhden aiemmaksi ja lisää loppuun uuden arvon
+     * @param taulukko numerotaulukko jota muutetaan
+     * @param vika taulukon viimeiseksi haluttu luku
+     * @return muokattu taulukko
+     */
     public int[] muutaTaulukko(int[] taulukko, int vika) {
         int[] kopio = new int[taulukko.length];
         for (int i = 0; i < taulukko.length - 1; i++) {
             kopio[i] = taulukko[i + 1];
         }
         kopio[kopio.length - 1] = vika;
-//        System.out.println("OG" + Arrays.toString(taulukko) + "uus" + Arrays.toString(kopio));
         return kopio;
     }
 }

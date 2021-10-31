@@ -101,6 +101,22 @@ public class KayttoliittymaTest {
      * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
      */
     @Test
+    public void testSyote4() throws Exception {
+        System.out.println("syote 4");
+        Scanner lukija = new Scanner("1\n1\n0\n2\n2\n4\ntiedosto\n100\npoistu");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.kaynnistaKayttoliittyma();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Tervetuloa"));
+
+//        assertEquals(true, tulosteet[3].startsWith("Minkä"));
+//        assertEquals(true, tulosteet[4].startsWith("Kuinka"));
+    }
+
+    /**
+     * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
+     */
+    @Test
     public void testSyoteStop() throws Exception {
         System.out.println("syote stop");
         Scanner lukija = new Scanner("stop\npoistu");
@@ -118,8 +134,9 @@ public class KayttoliittymaTest {
         Scanner lukija = new Scanner("1\n1\n0\n2\n2\npoistu");
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.kaynnistaKayttoliittyma();
-        
+
     }
+
     /**
      * Test of listaus method, of class Kayttoliittyma.
      */
@@ -189,7 +206,7 @@ public class KayttoliittymaTest {
     @Test
     public void testValitseSyvyys() throws Exception {
         System.out.println("syvyys liian suuri");
-        Scanner lukija = new Scanner("8\n8");
+        Scanner lukija = new Scanner("9\n9");
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.valitseSyvyys();
         String[] tulosteet = tuloste.toString().split("\n");

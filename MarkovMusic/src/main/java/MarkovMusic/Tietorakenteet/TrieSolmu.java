@@ -18,8 +18,7 @@ public class TrieSolmu {
     /**
      * TrieSolmu on luokka joka toteuttaa Markovin ketjujen solmut
      *
-     * @param arvo "avain" tai arvo joka jokaisella solmulla on identifiointia
-     * ja läpikäyntiä varten
+     * @param i
      */
     public TrieSolmu(int arvo) {
         this.solmut = new TrieSolmu[128];
@@ -73,6 +72,11 @@ public class TrieSolmu {
         return r.nextInt(painojenLkm());
     }
 
+    /**
+     * Valitsee arpomalla jonkun arvoista
+     * @param satunnaisluku arvontaan käytetty arvo
+     * @return palauttaa solmun
+     */
     public TrieSolmu valitse(int satunnaisluku) {
         Collections.sort(painot);
         int valittu = painot.get(satunnaisluku);
@@ -126,8 +130,8 @@ public class TrieSolmu {
     }
 
     /**
-     *
-     * @param solmu
+     * Poistaa solmun ja sen esiintymien tiedot
+     * @param solmu poistettava solmu
      */
     public void poistaSolmu(int solmu) {
         for (int i = 0; i < painot.size(); i++) {
@@ -139,8 +143,8 @@ public class TrieSolmu {
     }
 
     /**
-     *
-     * @return
+     * Palauttaa listan solmun alasolmuja
+     * @return alasolmut
      */
     public ArrayList<Integer> alaSolmut() {
         ArrayList<Integer> palautettava = new ArrayList();
@@ -153,7 +157,7 @@ public class TrieSolmu {
     }
 
     /**
-     *
+     * Tulostaa solmun tiedto
      */
     public void printtaaTiedot() {
         System.out.println(toString());
@@ -161,9 +165,9 @@ public class TrieSolmu {
     }
 
     /**
-     *
-     * @param arvo
-     * @return
+     * tarkistaa onko arvoa olemassa
+     * @param arvo etsittävän arvo
+     * @return totuusarvo löytyykö solmu tämän solmun alta
      */
     public boolean loytyySolmu(int arvo) {
         return painot.contains(arvo);

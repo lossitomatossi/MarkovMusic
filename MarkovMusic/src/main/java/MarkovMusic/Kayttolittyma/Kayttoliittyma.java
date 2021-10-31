@@ -12,16 +12,18 @@ import MarkovMusic.Tietorakenteet.Trie;
 import MarkovMusic.apumetodit.MIDkirjoitin;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import javax.sound.midi.MidiUnavailableException;
 
+/**
+ *
+ * @author tompp
+ */
 public class Kayttoliittyma {
 
     //private final kappaleet();
     private final Tiedostonlukija tl;
-    private final List<List<String>> kappaleet;
     private final Trie juuri;
     MIDsoitin soitin;
     private final MIDlukija MIDlukija;
@@ -29,9 +31,14 @@ public class Kayttoliittyma {
     private final Scanner lukija;
     private ArrayList<Integer> tuotetutNuotit;
 
+    /**
+     * Käyttöliittymän luontimetodi
+     * @param lukija Scanner olio joka lukee käyttäjän syötteen
+     * @throws MidiUnavailableException heittää virheen jos MIDIpalvelu ei
+     * saatavilla
+     */
     public Kayttoliittyma(Scanner lukija) throws MidiUnavailableException {
         tl = new Tiedostonlukija();
-        kappaleet = new ArrayList<>();
         juuri = new Trie();
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
@@ -40,6 +47,10 @@ public class Kayttoliittyma {
         this.lukija = lukija;
     }
 
+    /**
+     * Käyttöliittymän runko
+     * @throws Exception heittää virheen jokaisesta virhetilanteesta
+     */
     public void kaynnistaKayttoliittyma() throws Exception {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
@@ -93,6 +104,10 @@ public class Kayttoliittyma {
 
     }
 
+    /**
+     * Luo Markovin ketjun datab perusteella
+     * @throws Exception virhe jos jotain menee pieleen.
+     */
     public void luoMarkovinKetju() throws Exception {
         if (valitutMidit.isEmpty()) {
             System.out.println("Markovin ketjua ei voi luoda ilman dataa");
@@ -138,6 +153,10 @@ public class Kayttoliittyma {
         return null;
     }
 
+    /**
+     *  Metodi jolla käyttäjä voi valita haluamansa määrän MID tiedostoja
+     * @throws IOException heittää virheen jos IO ei saatavilla
+     */
     public void valitseMIDIt() throws IOException {
         System.out.println("Aloitetaan tiedostojen valinta Markovin"
                 + " ketjuja varten.");
@@ -154,6 +173,11 @@ public class Kayttoliittyma {
         }
     }
 
+    /**
+     * Metodi jolla käyttäjä voi valita midi tiedostojen nimen sallituista
+     * indekseistä
+     * @param midit lista jossa on MIDIen nimet
+     */
     public void valitseMidi(List<String> midit) {
         int maksimiIndeksi = midit.size();
         int indeksi;
@@ -170,22 +194,35 @@ public class Kayttoliittyma {
 
     }
 
+    /**
+     * Metodi joka tulostaa käyttäjän valitsemat kappaleet
+     */
     public void listaaValitut() {
         System.out.println("Valitut MIDI tiedostot:");
         System.out.println(valitutMidit);
     }
 
+    /**
+     * Käyttöliittymän metodi Markovin ketjujen asteen valintaan
+     * syvyys on yhden suurempi kuin Markovin ketjun aste.
+     * Esim syvyys 2 vastaa 1. asteen Markovin ketjua
+     */
     public void valitseSyvyys() {
-        System.out.println("Valitse syvyys (syvyyden pitää olla suurempi kuin 1 ja pienempi kuin 7)");
+        System.out.println("Valitse syvyys (syvyyden pitää olla suurempi kuin 1 ja pienempi kuin 9)");
         int syvyys = lukija.nextInt();
-        if (syvyys < 2 || syvyys > 6) {
-            System.out.println("Syvyys ei ole välillä 2-6, syötä uusi syvyys tältä väliltä.");
+        if (syvyys < 2 || syvyys > 8) {
+            System.out.println("Syvyys ei ole välillä 2-8, syötä uusi syvyys tältä väliltä.");
             syvyys = lukija.nextInt();
         }
         juuri.setSyvyys(syvyys);
 
     }
 
+    /**
+     * Metodi jolla voidaan kuunnella halutun kappaleen sisältö,
+     * keskeneräinen joten tällä hetkellä toimii vain oletuskappaleelle.
+     * @throws Exception
+     */
     public void soitaKappale() throws Exception {
         System.out.println("Minkä kappaleen haluat soittaa.");
         String kappale = lukija.nextLine();
