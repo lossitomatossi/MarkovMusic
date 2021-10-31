@@ -1,6 +1,8 @@
 # MarkovMusic
 Java projekti jonka tarkoitus on tuottaa MIDI-raitoja Markovin ketjuja käyttäen ohjelmalle annetuista tiedostoista.
 
+Projektin juuresta löytyy tiedostot 1., 2., 3. ja 6. asteen Markovin ketjujen tuottamasta musiikista.
+
 ## Dokumentaatio
 [Määrittelydokumentti](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/maarittely.md)
 
