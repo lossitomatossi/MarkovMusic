@@ -109,18 +109,17 @@ public class KayttoliittymaTest {
         assertEquals(false, k.soitin.sequencerPyorii());
     }
 
-//    /**
-//     * Test of luoMarkovinKetju method, of class Kayttoliittyma.
-//     */
-//    @Test
-//    public void testLuoMarkovinKetju() throws Exception {
-//        System.out.println("luoMarkovinKetju");
-//        Kayttoliittyma instance = new Kayttoliittyma();
-//        instance.luoMarkovinKetju();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-
+    /**
+     * Test of luoMarkovinKetju method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testLuoMarkovinKetju() throws Exception {
+        System.out.println("luoMarkovinKetju");
+        Scanner lukija = new Scanner("1\n1\n0\n2\n2\npoistu");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.kaynnistaKayttoliittyma();
+        
+    }
     /**
      * Test of listaus method, of class Kayttoliittyma.
      */
@@ -234,7 +233,7 @@ public class KayttoliittymaTest {
         String[] tulosteet = tuloste.toString().split("\n");
         assertEquals(true, tulosteet[1].startsWith("Tervetuloa"));
         assertEquals(true, tulosteet[3].startsWith("Minkä"));
-        
+
     }
 
     /**

@@ -9,9 +9,10 @@ import MarkovMusic.Apumetodit.MIDlukija;
 import MarkovMusic.Apumetodit.MIDsoitin;
 import MarkovMusic.Apumetodit.Tiedostonlukija;
 import MarkovMusic.Tietorakenteet.Trie;
+import MarkovMusic.apumetodit.MIDkirjoitin;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import javax.sound.midi.MidiUnavailableException;
@@ -21,11 +22,12 @@ public class Kayttoliittyma {
     //private final kappaleet();
     private final Tiedostonlukija tl;
     private final List<List<String>> kappaleet;
-    private Trie juuri;
+    private final Trie juuri;
     MIDsoitin soitin;
-    private MIDlukija MIDlukija;
+    private final MIDlukija MIDlukija;
     private List<String> valitutMidit;
-    private Scanner lukija;
+    private final Scanner lukija;
+    private ArrayList<Integer> tuotetutNuotit;
 
     public Kayttoliittyma(Scanner lukija) throws MidiUnavailableException {
         tl = new Tiedostonlukija();
@@ -34,12 +36,16 @@ public class Kayttoliittyma {
         soitin = new MIDsoitin();
         MIDlukija = new MIDlukija();
         valitutMidit = new ArrayList<>();
+        tuotetutNuotit = new ArrayList<>();
         this.lukija = lukija;
     }
 
     public void kaynnistaKayttoliittyma() throws Exception {
         System.out.println("Tervetuloa MarkovMusic ohjelmaan!");
         String komento;
+        int[] taulukko = {8, 7, 4, 4, 4};
+        juuri.muutaTaulukko(taulukko, 6);
+        juuri.seuraava(taulukko);
 
         while (true) {
             System.out.println("Anna komento (jos haluat nähdä komennot kirjoita komennot):");
@@ -57,6 +63,14 @@ public class Kayttoliittyma {
                     break;
                 case "3":
                     System.out.println("Haluatko samat ajoitukset nuoteille vai generoidaanko uudet?");
+                    break;
+                case "4":
+//                    System.out.println(Arrays.toString(juuri.arvoAloitusArvot()));
+                    System.out.println("Minkä haluat tiedoston nimeksi?");
+                    String kappale = lukija.nextLine();
+                    System.out.println("Kuinka monta nuottia pitkän kappaleen maksimissaan haluat? ");
+                    int montako = lukija.nextInt();
+                    teeMusiikkia(kappale, montako);
                     break;
                 case "poistu":
                     System.out.println("Suljetaan");
@@ -79,9 +93,14 @@ public class Kayttoliittyma {
 
     }
 
-    public void luoMarkovinKetju() {
-        List<MIDItiedot> miditiedot = new ArrayList<>();
-        juuri.lisaaMiditiedotTriehen(miditiedot, juuri.getSyvyys());
+    public void luoMarkovinKetju() throws Exception {
+        if (valitutMidit.isEmpty()) {
+            System.out.println("Markovin ketjua ei voi luoda ilman dataa");
+        } else {
+            for (String midi : valitutMidit) {
+                juuri.lisaaMiditiedotTriehen(MIDlukija.lueMIDIRaita(midi, 1), juuri.getSyvyys());
+            }
+        }
     }
 
     /**
@@ -171,6 +190,15 @@ public class Kayttoliittyma {
         System.out.println("Minkä kappaleen haluat soittaa.");
         String kappale = lukija.nextLine();
         soitin.soitaMid();
+    }
+
+    private void teeMusiikkia(String kappale, int montako) throws Exception {
+
+        MIDkirjoitin mk = new MIDkirjoitin(kappale);
+
+        tuotetutNuotit = juuri.luoUutta(montako);
+        mk.tallennaMidi(tuotetutNuotit, (ArrayList<MIDItiedot>) MIDlukija.lueMIDIRaita(valitutMidit.get(0), 1));
+        System.out.println("Tallennettu kappale: " + kappale);
     }
 
 }

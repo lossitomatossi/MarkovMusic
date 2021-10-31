@@ -16,12 +16,6 @@ public class TrieTest {
     public TrieTest() {
     }
 
-//    @Test
-//    public void testSomeMethod() {
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-
     /**
      * Test of setSyvyys method, of class Trie.
      */
@@ -96,7 +90,51 @@ public class TrieTest {
         int[] oletettu = {1,2,3};
         t.lisaaTaulukkoTriehen(oletettu);
         oletettu[0] = 1;
-        int[] tulos = t.arvoAloitusArvot();
-        assertEquals(2, tulos.length);
+        assertEquals(2, t.arvoAloitusArvot().length);
+    }
+    
+    @Test
+    public void testSeuraava() {
+        System.out.println("seuraava");
+        Trie t = new Trie(3);
+        int[] oletettu = {1,2,3};
+        int[] testi = {1,2};
+        t.lisaaTaulukkoTriehen(oletettu);
+        
+        assertEquals(3, t.seuraava(testi));
+    }
+    
+    @Test
+    public void testLuoUutta() {
+        Trie t = new Trie(3);
+        int[] oletettu = {1,2,3};
+        t.lisaaTaulukkoTriehen(oletettu);
+        
+        assertNotEquals(true, t.luoUutta(8).isEmpty());
+    }
+    @Test
+    public void testLuoUutta2() {
+        Trie t = new Trie(3);
+        int[] oletettu = {1,2,3};
+        t.lisaaTaulukkoTriehen(oletettu);
+        
+        assertEquals(true, t.luoUutta(2).isEmpty());
+    }
+    @Test
+    public void testLuoUutta3() {
+        Trie t = new Trie(3);
+        int[] oletettu = {1, 2, 3};
+        t.lisaaTaulukkoTriehen(oletettu);
+
+        assertEquals(true, t.luoUutta(6).size()<=6);
+    }
+    
+    @Test
+    public void testLuoUutta4() {
+        Trie t = new Trie(2);
+        int[] oletettu = {1, 2, 3};
+        t.lisaaTaulukkoTriehen(oletettu);
+
+        assertEquals(true, t.luoUutta(7).size()<=7);
     }
 }

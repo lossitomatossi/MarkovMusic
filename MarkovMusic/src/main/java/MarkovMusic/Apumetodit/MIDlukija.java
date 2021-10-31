@@ -70,9 +70,9 @@ public class MIDlukija {
             Long loppuhetki = raita.get(i + 1).getTick();
             if (viesti instanceof ShortMessage sm) {
                 MIDItiedot apu = new MIDItiedot(alkuhetki, sm.getData1(), loppuhetki - alkuhetki);
-                System.out.println(apu);
+//                System.out.println(apu);
                 tiedot.add(apu);
-                System.out.println(tiedot.size());
+//                System.out.println(tiedot.size());
             }
         }
         return tiedot;

@@ -1,7 +1,7 @@
 package MarkovMusic.Tietorakenteet;
 
 import MarkovMusic.Apumetodit.MIDItiedot;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,6 +83,17 @@ public class Trie {
         return true;
     }
 
+    public int seuraava(int[] jono) {
+        TrieSolmu nykyinen = juuri;
+        for (int i = 0; i < jono.length; i++) {
+            if (nykyinen == null) {
+                return -99;
+            }
+            nykyinen = nykyinen.palautaSolmu(jono[i]);
+        }
+        return nykyinen.valitseSolmu().solmunArvo;
+    }
+
     /**
      * Metodi jolla voi lisätä MIDI tiedostosta saadut tiedot kerralla halun
      * syvyiseen Markovin ketjuun
@@ -95,8 +106,8 @@ public class Trie {
         int jakojaannos = koko % syvyys;
         int apuIndeksi = koko - jakojaannos;
 
-        System.out.println("Syvyys: " + syvyys + " listan koko: " + koko + " jakojaannos: "
-                + jakojaannos + " apuIndeksi: " + apuIndeksi);
+//        System.out.println("Syvyys: " + syvyys + " listan koko: " + koko + " jakojaannos: "
+//                + jakojaannos + " apuIndeksi: " + apuIndeksi);
         int j = 0;
         int[] lisattavat = new int[syvyys];
         for (int i = 0; i < apuIndeksi; i++) {
@@ -107,30 +118,67 @@ public class Trie {
                 lisaaTaulukkoTriehen(lisattavat);
                 j = 0;
             }
-            
+
         }
     }
 
     /**
-     * Metodi joka arpoo aloituskohdan Markovin ketjua varten, ns. ensimmaisen
+     * Metodi joka arpoo aloituskohdan Markovin ketjua varten, ns.ensimmaisen
      * arvon jolla ketjua aletaan kulkemaan.
      *
+     * @return
      */
     public int[] arvoAloitusArvot() {
         int[] aloitusArvot = new int[syvyys - 1];
         TrieSolmu ts = getJuuri();
-        for (int i = 0; i < syvyys-1; i++) {
-            System.out.println(ts.solmunTiedot());
+        for (int i = 0; i < syvyys - 1; i++) {
+//            System.out.println(ts.solmunTiedot());
             int satunnaisluku = ts.satunnaisluku();
-            System.out.println("Satunnaisluku: " + satunnaisluku);
+//            System.out.println("Satunnaisluku: " + satunnaisluku);
             ts = ts.valitse(satunnaisluku);
             aloitusArvot[i] = ts.solmunArvo;
         }
         return aloitusArvot;
     }
-    
+
     public TrieSolmu getJuuri() {
         return this.juuri;
     }
 
+    public ArrayList<Integer> luoUutta(int montako) {
+        if (montako < syvyys) {
+            return new ArrayList<>();
+        }
+        ArrayList<Integer> nuotit = new ArrayList<>();
+        int[] aloitusArvo = arvoAloitusArvot();
+        for (int i : aloitusArvo) {
+            nuotit.add(i);
+        }
+        int vika;
+        for (int i = 0; i < montako - aloitusArvo.length; i++) {
+            if (etsiJonoa(aloitusArvo)) {
+                vika = seuraava(aloitusArvo);
+                nuotit.add(vika);
+                aloitusArvo = muutaTaulukko(aloitusArvo, vika);
+            } else {
+                aloitusArvo = arvoAloitusArvot();
+                for (int x : aloitusArvo) {
+                    nuotit.add(x);
+                    i++;
+                }
+            }
+        }
+        
+        return nuotit;
+    }
+
+    public int[] muutaTaulukko(int[] taulukko, int vika) {
+        int[] kopio = new int[taulukko.length];
+        for (int i = 0; i < taulukko.length - 1; i++) {
+            kopio[i] = taulukko[i + 1];
+        }
+        kopio[kopio.length - 1] = vika;
+//        System.out.println("OG" + Arrays.toString(taulukko) + "uus" + Arrays.toString(kopio));
+        return kopio;
+    }
 }
