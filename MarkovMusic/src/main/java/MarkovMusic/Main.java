@@ -6,6 +6,7 @@
 package MarkovMusic;
 
 import MarkovMusic.Kayttolittyma.Kayttoliittyma;
+import java.util.Scanner;
 
 /**
  *
@@ -21,7 +22,8 @@ public class Main {
      * @throws javax.sound.midi.InvalidMidiDataException
      */
     public static void main(String[] args) throws Exception {
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        Scanner lukija = new Scanner(System.in);
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
         kayttoliittyma.kaynnistaKayttoliittyma();
     }
 

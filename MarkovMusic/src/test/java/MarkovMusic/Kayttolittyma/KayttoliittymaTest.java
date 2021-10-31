@@ -57,49 +57,18 @@ public class KayttoliittymaTest {
         assertEquals(komennot, k.komennot());
     }
 
-//    /**
-//     * Test of kappaleet method, of class UIapu.
-//     */
-//    @Test
-//    public void testKappaleet() throws Exception {
-//        System.out.println("kappaleet");
-//        Scanner lukija = new Scanner("komennot\npoistu");
-//        Kayttoliittyma k = new Kayttoliittyma(lukija);
-//        assertEquals(tl.listaaTiedostot("musiikki/kappaleet/"), k.kappaleet());
-//    }
-//    /**
-//     * Test of sointutiedostot method, of class UIapu.
-//     */
-//    @Test
-//    public void testSointutiedostot() throws Exception {
-//        System.out.println("sointutiedostot");
-//        Scanner lukija = new Scanner("komennot\npoistu");
-//        Kayttoliittyma k = new Kayttoliittyma(lukija);
-//        assertEquals(tl.listaaTiedostot("musiikki/sointutiedostot/"), k.sointutiedostot());
-//    }
-//
-//    /**
-//     * Test of midit method, of class UIapu.
-//     */
-//    @Test
-//    public void testMidit() throws Exception {
-//        Scanner lukija = new Scanner("midit\npoistu");
-//        Kayttoliittyma k = new Kayttoliittyma(lukija);
-//        ArrayList<String> mid = new ArrayList<>();
-//        mid.add("bach-inventions.mid");
-//        assertEquals(mid, k.midit());
-//    }
     /**
      * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
      */
     @Test
     public void testSyote1() throws Exception {
         System.out.println("syote 1");
-        Scanner lukija = new Scanner("1\npoistu");
+        Scanner lukija = new Scanner("1\n0\npoistu");
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.kaynnistaKayttoliittyma();
         String[] tulosteet = tuloste.toString().split("\n");
-        assertEquals(true, tulosteet[2].startsWith("Valitse"));
+        assertEquals(true, tulosteet[1].startsWith("Tervetuloa"));
+
     }
 
     /**
@@ -112,7 +81,7 @@ public class KayttoliittymaTest {
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.kaynnistaKayttoliittyma();
         String[] tulosteet = tuloste.toString().split("\n");
-        assertEquals(true, tulosteet[2].startsWith("Valitse"));
+        assertEquals(true, tulosteet[3].startsWith("Valitse"));
     }
 
     /**
@@ -125,7 +94,7 @@ public class KayttoliittymaTest {
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.kaynnistaKayttoliittyma();
         String[] tulosteet = tuloste.toString().split("\n");
-        assertEquals(true, tulosteet[2].startsWith("Haluatko"));
+        assertEquals(true, tulosteet[3].startsWith("Haluatko"));
     }
 
     /**
@@ -140,29 +109,17 @@ public class KayttoliittymaTest {
         assertEquals(false, k.soitin.sequencerPyorii());
     }
 
-    /**
-     * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
-     */
-    @Test
-    public void testSyoteSoita() throws Exception {
-        System.out.println("syote soita");
-        Scanner lukija = new Scanner("soita\npoistu");
-        Kayttoliittyma k = new Kayttoliittyma(lukija);
-        k.kaynnistaKayttoliittyma();
-        assertEquals(true, k.soitin.sequencerAuki());
-    }
-
-    /**
-     * Test of luoMarkovinKetju method, of class Kayttoliittyma.
-     */
-    @Test
-    public void testLuoMarkovinKetju() throws Exception {
-        System.out.println("luoMarkovinKetju");
-        Kayttoliittyma instance = new Kayttoliittyma();
-        instance.luoMarkovinKetju();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of luoMarkovinKetju method, of class Kayttoliittyma.
+//     */
+//    @Test
+//    public void testLuoMarkovinKetju() throws Exception {
+//        System.out.println("luoMarkovinKetju");
+//        Kayttoliittyma instance = new Kayttoliittyma();
+//        instance.luoMarkovinKetju();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of listaus method, of class Kayttoliittyma.
@@ -228,22 +185,6 @@ public class KayttoliittymaTest {
     }
 
     /**
-     * Test of valitseMIDIt method, of class Kayttoliittyma.
-     */
-    @Test
-    public void testValitseMIDIt2() throws Exception {
-        System.out.println("valitseMIDIt2");
-        Scanner lukija = new Scanner("1\n1");
-        Kayttoliittyma k = new Kayttoliittyma(lukija);
-        k.valitseMIDIt();
-        String[] tulosteet = tuloste.toString().split("\n");
-        assertEquals(true, tulosteet[1].startsWith("Aloitetaan"));
-        assertEquals(true, tulosteet[2].startsWith("Montako"));
-    }
-    
-    
-
-    /**
      * Test of valitseSyvyys method, of class Kayttoliittyma.
      */
     @Test
@@ -273,9 +214,52 @@ public class KayttoliittymaTest {
      */
     @Test
     public void testSoitaKappale() throws Exception {
+        System.out.println("soitaKappale");
         Scanner lukija = new Scanner("soita\npoistu");
         Kayttoliittyma k = new Kayttoliittyma(lukija);
         k.soitaKappale();
         assertEquals(true, k.soitin.sequencerAuki());
+        assertEquals(true, k.soitin.sequencerPyorii());
+    }
+
+    /**
+     * Test of soitaKappale method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testSoitaKappale2() throws Exception {
+        System.out.println("soitaKappale2");
+        Scanner lukija = new Scanner("soita\nkappale\npoistu");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.kaynnistaKayttoliittyma();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Tervetuloa"));
+        assertEquals(true, tulosteet[3].startsWith("Minkä"));
+        
+    }
+
+    /**
+     * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testMidiValintoja() throws Exception {
+        System.out.println("midivalintoja");
+        Scanner lukija = new Scanner("1\n2\n0\n0\npoistu");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.kaynnistaKayttoliittyma();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Tervetuloa"));
+    }
+
+    /**
+     * Test of kaynnistaKayttoliittyma method, of class Kayttoliittyma.
+     */
+    @Test
+    public void testMidiValintoja2() throws Exception {
+        System.out.println("midivalintoja2");
+        Scanner lukija = new Scanner("1\n2\n0\n8\n8\n0\npoistu");
+        Kayttoliittyma k = new Kayttoliittyma(lukija);
+        k.kaynnistaKayttoliittyma();
+        String[] tulosteet = tuloste.toString().split("\n");
+        assertEquals(true, tulosteet[1].startsWith("Tervetuloa"));
     }
 }

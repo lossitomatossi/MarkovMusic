@@ -27,16 +27,6 @@ public class Kayttoliittyma {
     private List<String> valitutMidit;
     private Scanner lukija;
 
-    public Kayttoliittyma() throws MidiUnavailableException {
-        tl = new Tiedostonlukija();
-        kappaleet = new ArrayList<>();
-        juuri = new Trie();
-        soitin = new MIDsoitin();
-        MIDlukija = new MIDlukija();
-        valitutMidit = new ArrayList<>();
-        lukija = new Scanner(System.in);
-    }
-
     public Kayttoliittyma(Scanner lukija) throws MidiUnavailableException {
         tl = new Tiedostonlukija();
         kappaleet = new ArrayList<>();
@@ -57,7 +47,7 @@ public class Kayttoliittyma {
             komento = komento.toLowerCase();
             switch (komento) {
                 case "1":
-                    System.out.println("1. Valitse MIDI tiedosto(t) Markovin ketjua varten");
+                    System.out.println("Valitse MIDI tiedosto(t) Markovin ketjua varten");
                     valitseMIDIt();
                     listaaValitut();
                     break;
@@ -80,6 +70,7 @@ public class Kayttoliittyma {
                     break;
                 case "stop":
                     soitin.stop();
+                    break;
                 default:
                     System.out.println("Komentoa " + komento + " ei ole olemassa.\n"
                             + "Valitse " + "\"komennot\"" + " nahdaksesi komennot.");
@@ -140,20 +131,23 @@ public class Kayttoliittyma {
         }
         System.out.println("Valitse MIDIen indeksit");
         for (int i = 0; i < montako; i++) {
-            valitseMidi(midienNimet.size(), midienNimet);
+            valitseMidi(midienNimet);
         }
     }
 
-    public void valitseMidi(int maksimiIndeksi, List<String> midit) {
+    public void valitseMidi(List<String> midit) {
+        int maksimiIndeksi = midit.size();
+        int indeksi;
         while (true) {
-            int indeksi = Integer.parseInt(lukija.nextLine());
+            indeksi = Integer.parseInt(lukija.nextLine());
             if (indeksi > maksimiIndeksi - 1) {
                 System.out.println("Indeksi on liian suuri! "
                         + "Kokeile uudelleen");
             } else {
-                valitutMidit.add(midit.get(indeksi));
+                break;
             }
         }
+        valitutMidit.add(midit.get(indeksi));
 
     }
 
