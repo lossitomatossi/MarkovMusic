@@ -6,7 +6,7 @@ Java projekti jonka tarkoitus on tuottaa MIDI-raitoja Markovin ketjuja käyttäe
 
 [Testausdokumentti](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/testausdokumentti.md)
 
-[~~Toteutusdokumentti~~](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/toteutusdokumentti.md)
+[Toteutusdokumentti](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/toteutusdokumentti.md)
 
 [Käyttöohje](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/kayttoohje.md)
 
