@@ -65,7 +65,7 @@ for i in range(0, lyhyempi.size()) {
 
 # Tietoa MIDI-tiedostoista
 
-MIDI tiedostot ovat tapa nauhoittaa/toistaa ääntä siten, että jokainen ääni on jaettu omalle kanavalleen. Tämän dokumentin on tarkoitus auttaa ymmärtämään niiden käyttöä asiaan perehtymättömille.
+MIDI-tiedostot ovat tapa nauhoittaa/toistaa ääntä siten, että jokainen ääni on jaettu omalle kanavalleen. Tämän dokumentin on tarkoitus auttaa ymmärtämään niiden käyttöä asiaan perehtymättömille.
 
 ## MIDI tiedoston lataaminen ohjelman käytettäväksi
 Sequence sequence = MidiSystem.getSequence(new File(polku));
