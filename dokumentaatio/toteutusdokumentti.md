@@ -55,7 +55,8 @@ for i in range(0, lyhyempi.size()) {
 ### Puutteet
 - Ohjelma ei tarkista löytyykö MIDI tiedostosta Track 1.
 - Vaikka ajoitukset ovat oikein, BPM (beats-per-minute) ei ole, jonka takia luotu musiikki on huomattavasti hitaampaa kuin alkuperäiskappaleessa.
-- Jostain syystä ohjelmaa ajettaessa tulee turhaan tuloste "Komentoa **komento** ei ole olemassa. "Valitse **komennot** nahdaksesi komennot."
+- Jostain syystä ohjelmaa ajettaessa tulee turhaan tuloste "Komentoa **komento** ei ole olemassa". 
+"Valitse **komennot** nahdaksesi komennot."
 
 ### Parannusehdotukset
 - Käyttöliittymään komennon 3 toteuttaminen jotta käyttäjä voi valita minkä perusteella ajoitukset valitaan.
