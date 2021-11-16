@@ -11,18 +11,19 @@ Ohjelma aloittaa tervehtimällä käyttäjää.
 Tervetuloa MarkovMusic ohjelmaan!
 Anna komento (jos haluat nähdä komennot kirjoita komennot):
 ```
+
+Version 1.0 mukainen komentojärjestys uuden musiikin luomiselle on 1, 2, 4 (kuitenkin huomioiden ohjelman pyytämät valinnat kunkin komennon aikana). Muiden komentojen järjestyksellä ei ole väliä.
+
 ### Ohjelman komennot (isoilla ja pienillä merkeillä ei ole väliä)
 | Komento | Toiminto |
 | ------------- |------------- |
-| aloita | aloittaa Markovin ketjujen muodostamisen |
+| 1 | pyytää käyttäjää valitsemaan tiedostot joiden perusteella Markovin ketjut luodaan |
+| 2 | pyytää käyttäjältä Markovin ketjun syvyyden, eli asteen ja muodostaa Trie rakenteen |
+| 3 | **ei toteutettu** tilaisuus kysyä käyttäjältä minkä perusteella tallennettavan kappaleen ajoitukset valitaan |
+| 4 | pyytää käyttäjältä tallennettavan tiedoston nimen ja nuottien lukumäärän, jonka jälkeen muodostaa uutta musiikkia Markovin ketjujen perusteella ja tallettaa MIDI-tiedoston projektin juureen |
 | komennot | listaa ohjelman tietämät komennot |
-| kappaleet | listaa kansiossa /musiikki/kappaleet olevat tiedostot |
-| sointutiedostot | listaa kansiossa /musiikki/sointutiedostot olevat tiedostot |
-| MIDIT | listaa kansiossa /musiikki/MID olevat tiedostot |
-| soita | soittaa käyttäjän valitseman MID tiedoston |
+| soita | soittaa bach-inventions.mid tiedoston |
 | stop | lopettaa MID tiedoston soittamisen |
-| lue | lukee käyttäjän valitsemat tekstitiedostot listalle |
-| bigram | muodostaa listalla olevista teksteistä bigrameja (alkuaskel Markovin ketjuja varten) |
 | poistu | sulkee ohjelman |
 
 Jos käyttäjän syöte on jotain muuta, käyttäjä saa virheviestin:
@@ -32,4 +33,4 @@ Valitse "komennot" nahdaksesi komennot.
 Anna komento (jos haluat nähdä komennot kirjoita komennot):
 ```
 
-Muissa tapauksissa ohjelma kysyy käyttäjän syötettä ohjeviestien saattamina.
+Muissa tapauksissa ohjelma kysyy käyttäjän syötettä ohjeviestien saattamina. Versiossa 1.0 jostain syystä ylläoleva virheviesti tulee onnistuneidenkin komentojen jälkeen, tästä ei kuitenkaan tarvitse välittää.
