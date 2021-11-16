@@ -64,6 +64,8 @@ for i in range(0, lyhyempi.size()) {
 - Mahdollisuus tehdä ajoituksista Markovin ketjuja.
 - Käyttöliittymässä voi soittaa tällä hetkellä vain kappaleen bach-inventions, metodin voisi generalisoida ja antaa käyttäjälle listauksen joista valita tiedosto jonka haluaa soittaa.
 - Tiedostojen tallennus projektin juuren sijaan musiikki/MIDI kansioon.
+- Komentojen 1, 2 ja 4 perään voisi lisätä tulostuksen joka ohjeistaa käyttäjää mikä komento pitäisi antaa seuraavaksi.
+- Muihinkin komentoihin voisi lisätä ylläolevalla tyylillä ohjeistusviestin.
 
 # Tietoa MIDI-tiedostoista
 
