@@ -17,7 +17,7 @@ Checkstyle korjausehdotukset löytyvät sijannista: MarkovMusic\build\reports\ch
 
 ## Testaustavat
 ### Yleisesti
-Ohjelmaa toteuttaessa kaikkien metodien kohdalla on yritetty eriyttää suurin osa toiminnallisuuksista omiksi toiminnoikseen, jotta Junit testit osuisivat mahdollisimman moneen toiminnallisuuteen. Tämä tarkoittaa myös sitä että rivikattavuus on järkevä metriikka testien oikeellisuuden tarkistamiseen.
+Ohjelmaa toteuttaessa kaikkien metodien kohdalla on yritetty eriyttää suurin osa toiminnallisuuksista omiksi toiminnoikseen, jotta Junit testit osuisivat mahdollisimman moneen toiminnallisuuteen. Tämä tarkoittaa myös sitä että rivikattavuus on järkevä metriikka testien oikeellisuuden tarkistamiseen. Kaikkia metodeita jotka ottavat vastaan syötteen on testattu oikeilla ja virheellisillä syötteillä, jotta niiden toiminta on voitu varmistaa. Myös get ja set, sekä alustusmetodien toiminnallisuus on varmistettu Junit testeillä.
 
 ### Käyttöliittymä
 Käyttöliittymä on luokka jolle annetaan Scanner olio, joten test/Kayttoliittyma testaa käyttäjän toiminnallisuuksia, jotta manuaalinen tarkastelu ei ole tarpeen. Manuaalinen tarkastelu on kuitenkin toteutettu kehitysvaiheessa manuaalisilla komennoilla jotka on loppupalautuksesta poistettu. Käyttöliittymän metodeille on toteutettu tarkistukset ettei käyttäjä voi valita tiedostoja joita ei ole olemassa, ja jos tiedostoja ei ole valittu käyttäjä saa virheilmoituksen.
