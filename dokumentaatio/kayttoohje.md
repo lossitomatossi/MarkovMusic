@@ -1,7 +1,7 @@
 # Käyttöohje
 
 ## Käynnistäminen
-Ohjelman voi käynnistää komentoriviltä komennolla ```gradlew run``` tai Apache Netbeans IDE:llä allaolevasta kohdasta jos Gradle pluginit on asennettu.
+Ohjelman voi käynnistää komentoriviltä komennolla ```gradlew run``` tai Apache Netbeans IDE:llä allaolevasta kohdasta jos Gradle pluginit on asennettu. Jar tiedoston voi luoda komennolla ```gradlew build``` ja se löytyy sijainnista /build/libs/.
 
 ![netbeans käynnistys](https://github.com/lossitomatossi/MarkovMusic/blob/main/dokumentaatio/kuvat/netbeans%20run.PNG)
 
@@ -40,3 +40,6 @@ Ohjelma odottaa kaikkien MIDI-tiedostojen löytyvän sijainnista /musiikki/MID. 
 
 ## Tallennettujen MIDI-tiedostojen kuuntelu
 Ohjelma tallentaa luodut MIDI-tiedostot projektin juureen joten niitä ei voi kuunnella vielä ohjelmalla. Jos/kun käyttöliittymän metodi soita generalisoidaan, voidaan kappaleet kuunnella jos ne sijaitsevat kansiossa /musiikki/MID. Kuitenkin versiossa 1.0 kappaleiden kuuntelu pitää tehdä jollain ulkoisella ohjelmalla kuten Windows Media Player tai vastaava.
+
+### Testitiedostot
+Ohjelman testitiedostojen sijainti on /musiikki/testikansio
