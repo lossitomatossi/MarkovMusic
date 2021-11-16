@@ -9,6 +9,8 @@ Automaattiset testit voidaan toistaa projektin juuressa komennolla ```./gradlew 
 
 Testikattavuus löytyy sijainnista: MarkovMusic\build\reports\jacoco\test\html\index.html
 
+#### Ohjelman testitiedostojen sijainti on /musiikki/testikansio
+
 - jotain ihmeellistä tapahtui MIDkirjoitin.java luokalle ja sen Junit testaaminen crashaa Javan, joten luokan omat testit jätetty tekemättä. Ohjelman toiminta kuitenkin tarkistettu, ja projektin juureen on tallennettu MIDI-tiedostoja jotka aukeavat/soivat kuten normaalit .mid tiedostot.
 
 ### Checkstyle
