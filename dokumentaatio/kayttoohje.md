@@ -34,3 +34,9 @@ Anna komento (jos haluat nähdä komennot kirjoita komennot):
 ```
 
 Muissa tapauksissa ohjelma kysyy käyttäjän syötettä ohjeviestien saattamina. Versiossa 1.0 jostain syystä ylläoleva virheviesti tulee onnistuneidenkin komentojen jälkeen, tästä ei kuitenkaan tarvitse välittää.
+
+## Uusien MIDI tiedostojen lisääminen ohjelmalle
+Ohjelma odottaa kaikkien MIDI-tiedostojen löytyvän sijainnista /musiikki/MID. Kappaleista jotka tänne lisätään pitäisi varmistaa että niistä löytyy Track 1, koska ohjelma olettaa melodian löytyvän siltä MIDI-raidalta.
+
+## Tallennettujen MIDI-tiedostojen kuuntelu
+Ohjelma tallentaa luodut MIDI-tiedostot projektin juureen joten niitä ei voi kuunnella vielä ohjelmalla. Jos/kun käyttöliittymän metodi soita generalisoidaan, voidaan kappaleet kuunnella jos ne sijaitsevat kansiossa /musiikki/MID. Kuitenkin versiossa 1.0 kappaleiden kuuntelu pitää tehdä jollain ulkoisella ohjelmalla kuten Windows Media Player tai vastaava.
